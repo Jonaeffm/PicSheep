@@ -24,6 +24,7 @@ public class ImageController {
 	@Autowired
 	ImageDbRepository imageDbRepository;
 	
+	
 	@PostMapping
 	Long uploadImage(@RequestParam MultipartFile multipartImage) throws Exception
 	{
@@ -41,4 +42,10 @@ public class ImageController {
 
 	    return new ByteArrayResource(image);
 	}
+	
+	@GetMapping(value = "/")
+	public String hw(){
+		return "hello";
+	}
+	
 }
