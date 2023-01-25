@@ -42,17 +42,7 @@ public class ImageController {
 		return array;
 	}
 	
-	@GetMapping(value = "/test")
-	public String testUpload() throws IOException
-	{
-		Image i = new Image();
-		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
-		i.setName("testImage");
-		long testID=  imageDbRepository.save(i).getId();
-		//downloadImage(testID);
-		String returnStr = "redirect:/image/"+testID;
-		return returnStr;
-	}
+	
 	
 	
 	
@@ -78,6 +68,24 @@ public class ImageController {
 	public String hw() throws IOException{
 		testUpload();
 		return "hw";
+	}
+	
+	@GetMapping(value = "/test" ,produces = MediaType.IMAGE_JPEG_VALUE)
+	public Resource testUpload() throws IOException
+	{
+		Image i = new Image();
+		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
+		i.setName("testImage");
+		long testID=  imageDbRepository.save(i).getId();
+		//downloadImage(testID);
+		//String returnStr = "redirect:/image/"+testID;
+		//return returnStr;
+		byte[] image = imageDbRepository.findById(testID)
+			      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
+			      .getContent();
+
+			    return new ByteArrayResource(image);
+		
 	}
 	
 }
