@@ -27,7 +27,7 @@ import domain.Image;
 
 import repositories.ImageDbRepository;
 
-@Controller
+@RestController
 public class ImageController {
 
 	@Autowired
