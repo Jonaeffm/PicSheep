@@ -45,7 +45,7 @@ public class ImageController {
 	
 	@GetMapping(value = "/")
 	public String hw(){
-		return "hello";
+		return "hw";
 	}
 	
 }
