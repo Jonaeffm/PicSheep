@@ -33,11 +33,24 @@ public class ImageController {
 	@Autowired
 	ImageDbRepository imageDbRepository;
 	
-	void imageJPG(String path) throws IOException
+	
+	
+	byte[] imageJPG(String path) throws IOException
 	{
 		
 		byte[] array = Files.readAllBytes(Paths.get(path));
+		return array;
 	}
+	
+	public long testUpload() throws IOException
+	{
+		Image i = new Image();
+		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
+		i.setName("testImage");
+		return imageDbRepository.save(i).getId();
+	}
+	
+	
 	
 	@PostMapping
 	Long uploadImage(@RequestParam MultipartFile multipartImage) throws Exception
