@@ -1,5 +1,12 @@
 package bootstrap;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.io.ByteArrayResource;
@@ -14,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.mock.web.MockMultipartFile;
 
 import domain.Image;
 
@@ -25,6 +33,11 @@ public class ImageController {
 	@Autowired
 	ImageDbRepository imageDbRepository;
 	
+	void imageJPG(String path) throws IOException
+	{
+		
+		byte[] array = Files.readAllBytes(Paths.get(path));
+	}
 	
 	@PostMapping
 	Long uploadImage(@RequestParam MultipartFile multipartImage) throws Exception
