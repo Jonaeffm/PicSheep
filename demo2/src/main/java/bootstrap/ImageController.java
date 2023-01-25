@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.mock.web.MockMultipartFile;
+
 
 import domain.Image;
 
@@ -42,12 +42,16 @@ public class ImageController {
 		return array;
 	}
 	
-	public long testUpload() throws IOException
+	@GetMapping(value = "/test")
+	public String testUpload() throws IOException
 	{
 		Image i = new Image();
 		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
 		i.setName("testImage");
-		return imageDbRepository.save(i).getId();
+		long testID=  imageDbRepository.save(i).getId();
+		//downloadImage(testID);
+		String returnStr = "redirect:/image/"+testID;
+		return returnStr;
 	}
 	
 	
@@ -71,7 +75,8 @@ public class ImageController {
 	}
 	
 	@GetMapping(value = "/")
-	public String hw(){
+	public String hw() throws IOException{
+		testUpload();
 		return "hw";
 	}
 	

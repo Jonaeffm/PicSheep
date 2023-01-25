@@ -20,5 +20,6 @@ public class BootStrapData implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		//uploadImage(/home/jon/Bilder/gemischt/a.jpg);
+		testUpload();
 	}
 }
