@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -94,11 +96,16 @@ public class ImageController {
 	}
 	@GetMapping("/images")
 	public String getHomePage(Model model,HttpServletResponse response) throws IOException {
-		
-		Image image = imageDbRepository.findById((long) 1).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		List<Image> images = imageDbRepository.findAll();
+		//Image image = imageDbRepository.findById((long) 1).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		response.setContentType("image/jpeg"); // Or whatever format you wanna use
-InputStream is = new ByteArrayInputStream(image.getContent());
-IOUtils.copy(is, response.getOutputStream());
+List<InputStream> isList=new ArrayList<InputStream>();
+		for(int i = 1;i<images.size()+1;i++)
+		{InputStream temp = new ByteArrayInputStream(images.get(i).getContent());
+		 isList.set(i, temp) ;
+		 IOUtils.copy(isList.get(i), response.getOutputStream());
+		 }
+
 		
 	    model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";
