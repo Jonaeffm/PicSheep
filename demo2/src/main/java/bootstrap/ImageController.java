@@ -1,11 +1,15 @@
 package bootstrap;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,7 +29,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import domain.Image;
-
+import jakarta.servlet.http.HttpServletResponse;
 import repositories.ImageDbRepository;
 
 @Controller
@@ -89,7 +93,13 @@ public class ImageController {
 		
 	}
 	@GetMapping("/images")
-	public String getHomePage(Model model) {
+	public String getHomePage(Model model,HttpServletResponse response) throws IOException {
+		
+		Image image = imageDbRepository.findById((long) 1).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		response.setContentType("image/jpeg"); // Or whatever format you wanna use
+InputStream is = new ByteArrayInputStream(image.getContent());
+IOUtils.copy(is, response.getOutputStream());
+		
 	    model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";
 	}
