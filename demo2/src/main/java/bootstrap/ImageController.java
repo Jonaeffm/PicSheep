@@ -8,12 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Base64;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.Base64;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,8 +83,8 @@ public class ImageController {
 		return "hw";
 	}
 	
-	@GetMapping(value = "/test" ,produces = MediaType.IMAGE_JPEG_VALUE)
-	public Resource testUpload() throws IOException
+	@GetMapping(value = "/test" )
+	public String testUpload() throws IOException
 	{
 		Image i = new Image();
 		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
@@ -90,11 +93,11 @@ public class ImageController {
 		//downloadImage(testID);
 		//String returnStr = "redirect:/image/"+testID;
 		//return returnStr;
-		byte[] image = imageDbRepository.findById(testID)
+		/*byte[] image = imageDbRepository.findById(testID)
 			      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
-			      .getContent();
+			      .getContent();*/
 
-			    return new ByteArrayResource(image);
+			    return "hW";
 		
 	}
 	
@@ -115,7 +118,8 @@ public class ImageController {
 		
 	       Map<Long, String> productBase64Images = new HashMap<>();
 	        for(Image image: images){               
-	            productBase64Images.put(image.getId(), Base64.getEncoder().encodeToString(image.getContent()));
+	            productBase64Images.put(image.getId(), Base64.encodeBase64String(image.getContent())
+);
 	        }
 	        model.addAttribute("images", productBase64Images);
 	    //model.addAttribute("images", imageDbRepository.findAll());
