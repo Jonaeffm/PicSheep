@@ -125,6 +125,7 @@ public class ImageController {
 	        	productBase64Images.put(image.getId(), contHeader);
 
 	        }
+	        model.addAttribute("imageclasses",images);
 	        model.addAttribute("images", productBase64Images);
 	    //model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";

@@ -17,9 +17,9 @@
 
 
 
-                <tr th:each="image, stat : ${images}">
-                    
-                    <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + image}" alt="">
+                <tr th:each="imageclass, stat : ${imageclasses}">
+                    <th></th>
+                    <th><img th:src="${'data:image/jpeg;charset=utf-8;base64,' + ${images.get(imageclass.id)}}" alt=""></th>
                    
                     
                 </tr>
