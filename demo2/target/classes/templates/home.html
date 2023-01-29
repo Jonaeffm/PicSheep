@@ -17,9 +17,9 @@
 
 
 
-                <tr th:each="image">
-                    <td th:text = "${image.id}"></td>
-                     <img class="card-img-top" th:src="@{'image/content/' + @{image.content}}">
+                <tr th:each="image, stat : ${images}">
+                    
+                     <img class="card-img-top" th:src="@{'image' + @{image}}">
                    
                     
                 </tr>
