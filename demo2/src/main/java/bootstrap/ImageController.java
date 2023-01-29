@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Base64;
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -118,8 +118,12 @@ public class ImageController {
 		
 	       Map<Long, String> productBase64Images = new HashMap<>();
 	        for(Image image: images){               
-	            productBase64Images.put(image.getId(), Base64.encodeBase64String(image.getContent())
-);
+	            
+	        	byte[] encodedCont = Base64.encodeBase64(image.getContent());
+	        	String contHeader = "Basic " + new String(encodedCont);
+	        	
+	        	productBase64Images.put(image.getId(), contHeader);
+
 	        }
 	        model.addAttribute("images", productBase64Images);
 	    //model.addAttribute("images", imageDbRepository.findAll());
