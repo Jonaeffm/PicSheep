@@ -17,14 +17,12 @@
 
 
 
-                <tr th:each="imageclass, stat : ${imageclasses}">
-                    <th></th>
-                    <th><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+${images.get(imageclass.id)}}" alt=""></th>
-                   
-                    
-                </tr>
+              
                 
-  
+  <tr th:each="image : ${images}">
+    <td th:text="${image.key}">keyvalue</td>
+    <th><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+${image.value}}" alt=""></th>
+</tr>
             
           
         </table>
