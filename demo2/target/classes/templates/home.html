@@ -19,7 +19,7 @@
 
                 <tr th:each="image, stat : ${images}">
                     
-                     <img class="card-img-top" th:src="@{'image' + @{image}}">
+                    <img th:src="${'data:image/jpeg;charset=utf-8;base64,' + image}" alt="">
                    
                     
                 </tr>
