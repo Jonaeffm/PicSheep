@@ -8,7 +8,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -28,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.thymeleaf.util.ArrayUtils;
 
 import domain.Image;
 import jakarta.servlet.http.HttpServletResponse;
@@ -94,20 +97,28 @@ public class ImageController {
 			    return new ByteArrayResource(image);
 		
 	}
+	
+	private String imageBase64;
+
+	public String getImageBase64() {
+	    return imageBase64;
+	}
+
+	public void setImageBase64(String imageBase64) {
+	    this.imageBase64 = imageBase64;
+	}
+	
 	@GetMapping("/images")
 	public String getHomePage(Model model,HttpServletResponse response) throws IOException {
-		List<Image> images = imageDbRepository.findAll();
-		//Image image = imageDbRepository.findById((long) 1).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		response.setContentType("image/jpeg"); // Or whatever format you wanna use
-List<InputStream> isList=new ArrayList<InputStream>();
-		for(int i = 1;i<images.size()+1;i++)
-		{InputStream temp = new ByteArrayInputStream(images.get(i).getContent());
-		 isList.set(i, temp) ;
-		 IOUtils.copy(isList.get(i), response.getOutputStream());
-		 }
-
 		
-	    model.addAttribute("images", imageDbRepository.findAll());
+			List<Image> images = imageDbRepository.findAll();
+		
+	       Map<Long, String> productBase64Images = new HashMap<>();
+	        for(Image image: images){               
+	            productBase64Images.put(image.getId(), Base64.getEncoder().encodeToString(image.getContent()));
+	        }
+	        model.addAttribute("images", productBase64Images);
+	    //model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";
 	}
 	
