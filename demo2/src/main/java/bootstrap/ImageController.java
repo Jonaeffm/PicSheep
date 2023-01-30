@@ -42,6 +42,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
 import sevices.IImageService;
+import sevices.ImageService;
 
 @Controller
 public class ImageController {
@@ -53,7 +54,7 @@ public class ImageController {
 	AlbumRepository albumRepository;
 	
 	@Autowired
-	IImageService imageService;
+	private IImageService imageService;
 	
 	byte[] imageJPG(String path) throws IOException
 	{
@@ -160,9 +161,12 @@ public class ImageController {
 	///showAlbum/{id}
 	
 	@GetMapping("/showAlbum/{id}")
-	public String showAlbum(Model model,HttpServletResponse response) throws IOException {
+	public String showAlbum(Model model,HttpServletResponse response, @PathVariable Long albumId) throws IOException {
 		
-			//List<Image> images = imageService.findByAlbum();
+		Album a = albumRepository.findById(albumId) .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+			     
+		
+			List<Image> images = imageService.findByAlbum(a);
 		
 	       Map<Long, String> productBase64Images = new HashMap<>();
 	        for(Image image: images){               

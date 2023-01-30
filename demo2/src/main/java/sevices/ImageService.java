@@ -4,14 +4,15 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import domain.Album;
-import domain.Budget;
+
 import domain.Image;
 import repositories.ImageDbRepository;
-import repositories.budgetRepository;
 
-public class ImageService {
+@Service
+public class ImageService implements IImageService{
 	
 	@Autowired
 	private ImageDbRepository repository;
@@ -26,4 +27,12 @@ public class ImageService {
 	}
 	return temp;
 }
+
+	
+
+	@Override
+	public void deleteById(long ID) {
+		// TODO Auto-generated method stub
+		
+	}
 }	

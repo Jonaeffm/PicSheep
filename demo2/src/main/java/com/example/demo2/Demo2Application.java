@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @EnableJpaRepositories("repositories") 
 @SpringBootApplication
-@ComponentScan({"bootstrap"})
+@ComponentScan({"bootstrap","sevices"})
 @EntityScan("domain")
 public class Demo2Application {
 

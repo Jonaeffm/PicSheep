@@ -9,8 +9,7 @@ import domain.Image;
 
 public interface IImageService {
 
-	List<Image> findAll();
-	void addBudget(Image b);
+	
 	
 	public void deleteById(long ID);
 	public List<Image> findByAlbum(Album a);
