@@ -22,7 +22,7 @@ public class ImageService implements IImageService{
 	List<Image> temp = (List<Image>) repository.findAll();
 	for(int i=temp.size()-1;i>-1;i--)
 	{
-		if(temp.get(i).getAlbum() != a)
+		if(!temp.get(i).getAlbum().equals(a))
 						temp.remove(i);
 	}
 	return temp;
