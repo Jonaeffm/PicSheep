@@ -161,7 +161,7 @@ public class ImageController {
 	///showAlbum/{id}
 	
 	@GetMapping("/showAlbum/{id}")
-	public String showAlbum(Model model,HttpServletResponse response, @PathVariable Long albumId) throws IOException {
+	public String showAlbum(@PathVariable("id") Long albumId,Model model,HttpServletResponse response ) throws IOException {
 		
 		Album a = albumRepository.findById(albumId) .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 			     
