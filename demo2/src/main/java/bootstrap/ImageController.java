@@ -36,8 +36,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.thymeleaf.util.ArrayUtils;
 
+import domain.Album;
 import domain.Image;
 import jakarta.servlet.http.HttpServletResponse;
+import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
 
 @Controller
@@ -45,6 +47,9 @@ public class ImageController {
 
 	@Autowired
 	ImageDbRepository imageDbRepository;
+	
+	@Autowired
+	AlbumRepository albumRepository;
 	
 	
 	
@@ -90,6 +95,17 @@ public class ImageController {
 		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a2.jpg"));
 		i.setName("testImage");
 		long testID=  imageDbRepository.save(i).getId();
+		
+		Image i2 = new Image();
+		i2.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));
+		i2.setName("testImagelarge");
+		testID=  imageDbRepository.save(i2).getId();
+		
+		Album a = new Album();
+		a.setName("testAlbum");
+		a.getImages().add(i);
+		a.getImages().add(i2);
+		albumRepository.save(a);
 		//downloadImage(testID);
 		//String returnStr = "redirect:/image/"+testID;
 		//return returnStr;

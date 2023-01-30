@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -14,15 +16,27 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
+
 public class Album {
 	@Id
 	 @Column(name="ALBUM_ID")
 	@GeneratedValue
 	Long id;
-	
+	String name;
 	 @OneToMany(targetEntity= Image.class, cascade= CascadeType.ALL)
 	    @JoinColumn(name="album_image",referencedColumnName = "AlBUM_ID")
 	    private Collection<Image> images;
+	public Album(String name) {
+		super();
+		this.name = name;
+	
+		 List<Image> imageSet =new ArrayList<Image>();
+	        this.setImages(imageSet);
+	}
 
+	public Album() {
+		
+		 List<Image> imageSet =new ArrayList<Image>();
+	        this.setImages(imageSet);
+	}
 }
