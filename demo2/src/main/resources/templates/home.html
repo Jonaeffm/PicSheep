@@ -22,11 +22,12 @@
   <tr th:each="image : ${images}">
     <td th:text="${image.key}"></td>
     <th><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""></th>
-	
+	<th>
 	 <div th:each="imageclass:${imageclasses}">
 	 <div th:if="${imageclass.id == image.key}"th:text="${imageclass.name}"/>
        
     </div>
+    </th>
 	
 </tr>
             
