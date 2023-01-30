@@ -19,7 +19,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                
+                <th>Open</th>
             </tr>
 
 
@@ -27,7 +27,7 @@
                 <tr th:each="album, stat : ${albums}">
                     <td th:text = "${album.id}"></td>
                     <td th:text = "${album.name}"></td>
-                    
+                     <td><a th:href="@{/showAlbum/{id}(id=${album.id})}">Open</a></td>
                 </tr>
                 
   
