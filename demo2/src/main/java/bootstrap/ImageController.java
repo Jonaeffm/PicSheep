@@ -88,6 +88,13 @@ public class ImageController {
 		return "hw";
 	}
 	
+	@GetMapping(value = "/albums" )
+	public String showAlbums(Model model)
+	{
+		model.addAttribute("albums", albumRepository.findAll());
+		return "showAlbum";
+	}
+	
 	@GetMapping(value = "/test" )
 	public String testUpload() throws IOException
 	{
