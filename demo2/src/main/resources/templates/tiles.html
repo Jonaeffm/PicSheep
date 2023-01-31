@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<link rel="stylesheet" href="stylesheet.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="l-grid-container" th:each="image : ${images}">
+
+ <img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
+
+</div>
+
+</body>
+</html>
