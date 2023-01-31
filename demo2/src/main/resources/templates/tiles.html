@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <style>
-l-grid-container {
+span3 {
  
    display: grid;
    grid-template-columns: 200px 200px 200px
@@ -18,9 +18,14 @@ l-grid-container {
 </head>
 <body>
 
-<div  colCount=${4} class="l-grid-container" th:each="image : ${images}">
+<div  colCount=${4}  th:each="image,row : ${images}"th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${image.key} % 4 == 0" class="span3">>
 
- <img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
+
+    <img th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})"th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100" ></span>
+
+
+
+ 
 
 </div>
 
