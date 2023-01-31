@@ -18,7 +18,7 @@ span3 {
 </head>
 <body>
 
-<div  colCount=${4}  th:each="image,row : ${images}"th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${image.key} % 4 == 0" class="span3">>
+<div  colCount=${4}  th:each="image,row : ${images}"th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${image.key} % 4 == 0" class="span3">
 
 
     <img th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})"th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100" ></span>
