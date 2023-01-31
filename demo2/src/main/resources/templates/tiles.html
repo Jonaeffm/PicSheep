@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <style>
-.l-grid-container {
+l-grid-container {
  
    display: grid;
-  grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: 200px 200px 200px
+  ;
+   justify-content: space-evenly;
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 
@@ -16,7 +18,7 @@
 </head>
 <body>
 
-<div class="l-grid-container" th:each="image : ${images}">
+<div  colCount=${4} class="l-grid-container" th:each="image : ${images}">
 
  <img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
 
