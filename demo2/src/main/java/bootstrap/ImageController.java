@@ -114,7 +114,9 @@ public class ImageController {
 		Album a = new Album();
 		a.setName("testAlbum");
 		a.getImages().add(i);
+		i.setAlbum(a);
 		a.getImages().add(i2);
+		i2.setAlbum(a);
 		albumRepository.save(a);
 		//downloadImage(testID);
 		//String returnStr = "redirect:/image/"+testID;
