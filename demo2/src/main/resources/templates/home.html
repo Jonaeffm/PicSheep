@@ -19,9 +19,9 @@
             <ul class="skills" >
                 <td th:each="image, index : ${images}" >
                 
-                <img  th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
-                    <th:unless="${(index.index-i) % 3}">
-                    
+               
+                    <th:unless="${(index.index-i) % 3==0}">
+                     <img  th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
                 	</tr>
                 	</th:unless>
                 </td>
