@@ -20,9 +20,13 @@
                 <td th:each="image, index : ${images}" >
                 
                <img  th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
-                    <th:unless="${(index.index) % 3=0}">
+                    <th:unless="${(index.index) % 3}">
                      
-                	</tr>
+                	 </td>
+            	</ul>
+       			</span>
+
+     			</tr  >      
                 	</th:unless>
                 </td>
             </ul>
