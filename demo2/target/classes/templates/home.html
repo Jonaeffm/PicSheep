@@ -15,12 +15,14 @@
            <th></th>
             </tr>
   <tr  > 
- <span >
+ <span th:each="i : ${#numbers.sequence(0, 2)}">
             <ul class="skills" >
-                <td th:each="i : ${#numbers.sequence(0, 2)}">
+                <td th:each="image, index : ${images}" >
+                
+                <img  th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
                     <th:unless="${(index.index-i) % 3}">
-                    <img th:each="image, index : ${images}" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
-                	</td>
+                    
+                	</tr>
                 	</th:unless>
                 </td>
             </ul>
