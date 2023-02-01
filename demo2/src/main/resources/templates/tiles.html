@@ -26,9 +26,10 @@ img {
     <div class="sectionContent">
         <span th:each="i : ${#numbers.sequence(0, 2)}">
             <ul class="skills">
-                <div th:each="image, index : ${images}"
-                    th:unless="${(index.index-i) % 3}">
-                    <span><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" /></span>
+                <div th:each="image, index : ${images}">
+                    <th:unless="${(index.index-i) % 3}">
+                    <img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
+                
                 </div>
             </ul>
         </span>

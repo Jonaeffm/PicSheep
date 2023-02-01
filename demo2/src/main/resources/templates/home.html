@@ -8,28 +8,25 @@
 
     <body>
    
-   <table>
+   <table  >
             <tr>
-                <th>Id</th>
-                <th>Image</th>
-                <th>Name</th>
+            <th></th>
+            <th></th>
+           <th></th>
             </tr>
 
 
 
               
                 
-  <tr th:each="image : ${images}">
-    <td th:text="${image.key}"></td>
-    <th><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100"></th>
-	<th>
-	 <div th:each="imageclass:${imageclasses}">
-	 <div th:if="${imageclass.id == image.key}"th:text="${imageclass.name}"/>
+  <tr  > <div><td th:each="image : ${images}"><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
+  </td><br/> </div>
+   
+    </tr>
        
-    </div>
-    </th>
+
 	
-</tr>
+
             
           
         </table>
