@@ -19,8 +19,8 @@
 
               
                 
-  <tr  > <div><td th:each="image : ${images}"><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
-  </td><br/> </div>
+  <tr  > <div><pre><td th:each="image : ${images}"><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
+  </td></pre></div>
    
     </tr>
        

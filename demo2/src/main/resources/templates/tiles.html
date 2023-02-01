@@ -5,11 +5,10 @@
 skills {
  
    display: grid;
-   grid-template-columns: 200px 200px 200px
-  ;
+   
   grid-auto-flow: row;
 
-  grid-auto-rows: minmax(100px, auto);
+  
 
 }
 img {
@@ -29,7 +28,8 @@ img {
                 <div th:each="image, index : ${images}">
                     <th:unless="${(index.index-i) % 3}">
                     <img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
-                
+                	</div>
+                	</th:unless>
                 </div>
             </ul>
         </span>
