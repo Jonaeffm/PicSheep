@@ -26,3 +26,8 @@ th:if="${image.key} % 4 == 0"
             
           
         </table>
+
+          <tr  > <div><pre><td th:each="image : ${images}"><img th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt=""  width="100">
+  </td></pre></div>
+   
+    </tr>
