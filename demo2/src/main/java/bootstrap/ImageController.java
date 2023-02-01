@@ -102,7 +102,7 @@ public class ImageController {
 	public String testUpload() throws IOException
 	{
 		Image i = new Image();
-		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a2.jpg"));
+		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a3.jpg"));
 		i.setName("testImage");
 		long testID=  imageDbRepository.save(i).getId();
 		
