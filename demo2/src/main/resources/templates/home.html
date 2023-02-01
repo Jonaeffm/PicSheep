@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
+    <style>
+    img {
+  border: 5px solid #ffffff;
+}
+</style>
         <title>Show budgets</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,21 +22,20 @@
   <tr  > 
  <span >
             <ul class="skills" >
-                <td th:each="image, index : ${images}" >
+                <td  >
                 
-               <img  th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
+               <img th:each="image, index : ${images}" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100" />
                     
                     
-                <th:unless="${index.index % 3}">
+                
                     
             		</td>
-            	 	<td th:text = "Test"></td>
+            	 	
             		</ul>
        				</span>
        				</tr>    
                 	<tr> 
-                </th:unless>
-            	
+             
                 	 
 
        
