@@ -5,6 +5,9 @@
     img {
   border: 5px solid #ffffff;
 }
+dialog { display: block; }
+
+dialog:not(:target):not([open]) { display: none; }
 </style>
         <title>Show budgets</title>
         <meta charset="UTF-8">
@@ -45,18 +48,17 @@
             
           
         </table>
-   
+    <p>
+        <a href="#dialog">Open dialog</a>
+      </p>
+
+      <dialog id="dialog">
+        <h2>Dialog</h2>
+        <p>test</p>
+        <a href="#!">Close</a>
+      </dialog>
        </body>
        
-<dialog  id="dialog">
-   <h2>PopUpTest</h2>
-   <form method="dialog">
-      <label for="img">image here</label>
-     
-      <button id="Delete" value="delete">delete</button>
-      <button id="Close">close</button>
-    </form>  
-</dialog>
-<button data-for-dialog="dialog" open>Open dialog</button>
+
 
 </html>
