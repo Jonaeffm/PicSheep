@@ -142,6 +142,8 @@ public class ImageController {
 	@GetMapping("/images")
 	public String getHomePage(Model model,HttpServletResponse response) throws IOException {
 		
+		
+		
 			List<Image> images = imageDbRepository.findAll();
 		
 	       Map<Long, String> productBase64Images = new HashMap<>();
