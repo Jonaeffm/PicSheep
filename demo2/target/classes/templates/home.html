@@ -22,32 +22,17 @@ dialog:not(:target):not([open]) { display: none; }
             <th></th>
            <th></th>
             </tr>
-  <tr  > 
- <span >
+  	<tr  > 
+ 		<span >
             <ul class="skills" >
                 <td  >
-                
-            <a th:each="image, index : ${images}" href="#dialog">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
-                    
-                    
-                
-                    
-            		</td>
-            	 	
-            		</ul>
-       				</span>
-       				</tr>    
-                	<tr> 
-             
-                	 
-
-       
-
-	
-
-            
-          
-        </table>
+                 	<a th:each="image, index : ${images}" href="#dialog">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
+               	</td>
+            </ul>
+       	</span>
+    </tr>    
+    <tr> 
+  </table>
     <p>
         <a href="#dialog">Open dialog</a>
       </p>
