@@ -20,10 +20,11 @@ dialog:not(:target):not([open]) { display: none; }
         		
         		document.getElementById('dialog').innerHTML =
         			
-        		'<p> ID: </p>'
+        		'<p> ID: '+key+'</p>'
         		 ;
         	}
   
+        	
         </script>
         
         </head>
@@ -40,7 +41,7 @@ dialog:not(:target):not([open]) { display: none; }
  		<span >
             <ul class="skills" >
                 <td  >
-                 	<a th:each="image, index : ${images}" href="#" onclick="showImage('a','a');" id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
+                 	<a th:each="image, index : ${images}" href="#" onclick="showImage('${image.key}','a');" id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
                	</td>
             </ul>
        	</span>
