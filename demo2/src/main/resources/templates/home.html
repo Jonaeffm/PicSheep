@@ -29,7 +29,7 @@ dialog:not(:target):not([open]) { display: none; }
         </head>
 
     <body>
-   <form onsubmit="showImage()">
+   
    <table  >
             <tr>
             <th></th>
@@ -40,14 +40,14 @@ dialog:not(:target):not([open]) { display: none; }
  		<span >
             <ul class="skills" >
                 <td  >
-                 	<a th:each="image, index : ${images}" href="#dialog" type="submit" id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
+                 	<a th:each="image, index : ${images}" href="#" onclick="showImage();" id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
                	</td>
             </ul>
        	</span>
     </tr>    
     <tr> 
   </table>
-  </form>
+ 
     <p>
         <a href="#dialog">Open dialog</a>
       </p>
