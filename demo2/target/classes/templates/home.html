@@ -12,14 +12,18 @@ dialog:not(:target):not([open]) { display: none; }
         <title>images</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+      
         <script>
         
         	function showImage()
         	{
         		
+        		document.getElementById('dialog').innerHTML =
+        			
+        		'<p> ID: ${chooseImage.image.key}</p>'
+        		 ;
         	}
-        
+  
         </script>
         
         </head>
@@ -49,8 +53,7 @@ dialog:not(:target):not([open]) { display: none; }
       </p>
 
       <dialog id="dialog">
-        <h2>Dialog</h2>
-        <p>ID: + {id}</p>
+    
         <a href="#!">Close</a>
       </dialog>
        </body>
