@@ -44,7 +44,7 @@ dialog:not(:target):not([open]) { display: none; }
  		<span >
             <ul class="skills" >
                 <td  >
-                 	<a th:each="image, index : ${images}" href="#"  id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:onclick="showImage(this.getAttribute('data-images','data-images'))" id="imgObj" /></a>
+                 	<a th:each="image, index : ${images}" href="#"  id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:onclick="showImage(this.getAttribute('data-images'),this.getAttribute('data-images'))" id="imgObj" /></a>
                	</td>
             </ul>
        	</span>
