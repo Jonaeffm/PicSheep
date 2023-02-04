@@ -12,6 +12,16 @@ dialog:not(:target):not([open]) { display: none; }
         <title>images</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+        
+        	function showImage()
+        	{
+        		
+        	}
+        
+        </script>
+        
         </head>
 
     <body>
@@ -26,7 +36,7 @@ dialog:not(:target):not([open]) { display: none; }
  		<span >
             <ul class="skills" >
                 <td  >
-                 	<a th:each="image, index : ${images}" href="#dialog" type="submit">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
+                 	<a th:each="image, index : ${images}" href="#dialog" type="submit" id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  /></a>
                	</td>
             </ul>
        	</span>
