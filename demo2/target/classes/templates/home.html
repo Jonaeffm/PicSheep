@@ -20,7 +20,8 @@ dialog:not(:target):not([open]) { display: none; }
         		
         		document.getElementById('dialog').innerHTML =
         			
-        		'<p> ID: '+value+'</p>'
+        		'<img th:src="${\'data:image/jpeg;charset=utf-8;base64,\''+value+'}" alt="test"  id="bigImg"/> <a href="#!">Close</a>'
+        		
         		 ;
         	}
   
