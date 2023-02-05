@@ -20,7 +20,11 @@ dialog:not(:target):not([open]) { display: none; }
         		
         		document.getElementById('dialog').innerHTML =
         			
-        		'<img th:src="${\'data:image/jpeg;charset=utf-8;base64,\''+value+'}" alt="test"  id="bigImg" class="bigImgClass"/> <a href="#!">Close</a>'
+        		
+        		'<div class="dbox-dialog--content">'+
+        		'<img th:src="${\'data:image/jpeg;charset=utf-8;base64,'+value+'\'}" alt="test"  id="bigImg" class="bigImgClass"/>'+
+        		'<a href="#!">Close</a>'+
+        		'</div>'
         		
         		 ;
         	}
