@@ -20,15 +20,12 @@ dialog:not(:target):not([open]) { display: none; }
         		
         		document.getElementById('dialog').innerHTML =
         			
-        		'<img th:src="${\'data:image/jpeg;charset=utf-8;base64,\''+value+'}" alt="test"  id="bigImg"/> <a href="#!">Close</a>'
+        		'<img th:src="${\'data:image/jpeg;charset=utf-8;base64,\''+value+'}" alt="test"  id="bigImg" class="bigImgClass"/> <a href="#!">Close</a>'
         		
         		 ;
         	}
   
-        	document.getElementById("imgObj").addEventListener("click", function() {
-        		
-        	    showImage(image.value,image.value);
-        	}, false);
+        	
         </script>
         
         </head>
