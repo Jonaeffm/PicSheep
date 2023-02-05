@@ -30,7 +30,7 @@ dialog:not(:target):not([open]) { display: none; }
         		'</br>'+
         		key.toString()+'</br>'+
         	
-        		' <div 		th:if="${#strings.equals(strings.toString(imageclass.id), \''+key.toString()+'\')}"th:text="${imageclass.name}"/>'+
+        		' <div 		th:if="${#strings.equals(strings.toString(imageclass.id), \''+key.toString()+'\')}"th:text="#{imageclass.name}"/>'+
 				
     			'</div>'+
         		'</br><a href="#!">Close</a>'+
