@@ -5,6 +5,10 @@
     img {
   border: 5px solid #ffffff;
 }
+bigImgClass{
+ max-height: 100vh;
+  max-width: 100vw;}
+
 dialog { display: block; }
 
 dialog:not(:target):not([open]) { display: none; }
@@ -22,7 +26,7 @@ dialog:not(:target):not([open]) { display: none; }
         			
         		
         		'<div class="dbox-dialog--content">'+
-        		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\"/>'+
+        		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
         		'</br>'+
         		
         		text.toString()+'</br>'+
