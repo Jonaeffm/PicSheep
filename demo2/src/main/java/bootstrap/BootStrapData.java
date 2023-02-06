@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 @EnableAutoConfiguration
 @Component
 public class BootStrapData implements CommandLineRunner{
-
 	
 	@Override
 	public void run(String... args) throws Exception {
