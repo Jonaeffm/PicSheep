@@ -1,63 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
-    <style>
-    img {
-  border: 5px solid #ffffff;
-}
-.bigImgClass{
- max-height: 100vh;
-  max-width: 100wh;}
+    	<style>
+   			 img {
+  					border: 5px solid #ffffff;
+				}
+			.bigImgClass{
+ 					max-height: 100vh;
+ 					 max-width: 100wh;}
+			dialog { display: block; }
+			dialog:not(:target):not([open]) { display: none; }
 
-dialog { display: block; }
-
-dialog:not(:target):not([open]) { display: none; }
-</style>
+	</style>
         <title>images</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-        <script th:inline="javascript">
-        
-       
-        var imageMap = /*[[${images}]]*/ 'default';
-      
-    
-
-        
-        	function showImage(text, value)
+       	<script th:inline="javascript">
+        	var imageMap = /*[[${images}]]*/ 'default';
+			function showImage(text, value)
         	{
-        		
         		document.getElementById('dialog').innerHTML =
-        			
-        		
         		'<div class="dbox-dialog--content">'+
         		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
         		'</br>'+
-        		
         		text.toString()+'</br>'+
-        	
-        		
         		'</br><a href="#!">Close</a>'+
-        		'</div>'
-        		
-        		 ;
+        		'</div>';
         	}
-  
-        	
         </script>
-        
-        </head>
-
+    </head>
     <body>
-   
    <table  >
             <tr>
             <th></th>
             <th></th>
-           <th></th>
+           	<th></th>
             </tr>
-  	<tr  > 
+  		<tr  > 
  		<span >
             <ul class="skills" >
                 <td  >
@@ -68,17 +47,12 @@ dialog:not(:target):not([open]) { display: none; }
     </tr>    
     <tr> 
   </table>
- 
     <p>
         <a href="#dialog">Open dialog</a>
-      </p>
-
-      <dialog id="dialog">
-    
-        <a href="#!">Close</a>
-      </dialog>
-       </body>
-       
-
-
+    </p>
+		<dialog id="dialog">
+        	<a href="#!">Close</a>
+   		</dialog>
+   		
+   		</body>
 </html>
