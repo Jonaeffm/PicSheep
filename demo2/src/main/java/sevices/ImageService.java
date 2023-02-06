@@ -27,9 +27,6 @@ public class ImageService implements IImageService{
 	}
 	return temp;
 }
-
-	
-
 	@Override
 	public void deleteById(long ID) {
 		// TODO Auto-generated method stub

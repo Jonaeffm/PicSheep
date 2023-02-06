@@ -8,11 +8,6 @@ import domain.Album;
 import domain.Image;
 
 public interface IImageService {
-
-	
-	
 	public void deleteById(long ID);
 	public List<Image> findByAlbum(Album a);
-	
-	
 }
