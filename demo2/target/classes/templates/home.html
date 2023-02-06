@@ -15,7 +15,7 @@ dialog:not(:target):not([open]) { display: none; }
       
         <script>
         
-        	function showImage(key, value)
+        	function showImage(text, value)
         	{
         		
         		document.getElementById('dialog').innerHTML =
@@ -23,16 +23,11 @@ dialog:not(:target):not([open]) { display: none; }
         		
         		'<div class="dbox-dialog--content">'+
         		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\"/>'+
-        		
-        		'<div th:each="imageclass:${imageclasses}">'+
-        		
-        		'<span   th:text="${imageclass.id}">id</span>'+
         		'</br>'+
-        		key.toString()+'</br>'+
+        		
+        		text.toString()+'</br>'+
         	
-        		' <div 		th:if="${#strings.equals(strings.toString(imageclass.id), \''+key.toString()+'\')}"th:text="#{imageclass.name}"/>'+
-				
-    			'</div>'+
+        		
         		'</br><a href="#!">Close</a>'+
         		'</div>'
         		
@@ -56,7 +51,7 @@ dialog:not(:target):not([open]) { display: none; }
  		<span >
             <ul class="skills" >
                 <td  >
-                 	<a th:each="image, index : ${images}" href="#dialog"  id="chooseImage">  <img href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:data-key="${image.key}" th:onclick="showImage(this.getAttribute('data-key'),this.getAttribute('data-images'))" id="imgObj" /></a>
+                 	<a th:each="image, index : ${images}" href="#dialog"  id="chooseImage">  <img th:each="imageclass:${imageclasses}"  th:if="${imageclass.id == image.key}" href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:data-text="${imageclass.name}" th:onclick="showImage(this.getAttribute('data-text'),this.getAttribute('data-images'))" id="imgObj" /></a>
                	</td>
             </ul>
        	</span>
