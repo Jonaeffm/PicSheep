@@ -18,18 +18,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
        		let imageMap = /*[[${images}]]*/ {};
-       		const mapIter = imageMap.entries();
+       		var bool = 0;
        		
-       		function showNextImage(key)
+       		function showNextImage(keyLast)
        		{
-       			while (mapIter.key != key)
-       				{
-       				mapIter.next();
+       			for (let [key, value] of imageMap) {
+       				if (bool)
+       					{keyLast=key;
+       					break;
+       					}
+       				if (key == keyLast )
+       					{bool=1;}
        				}
        			
        			document.getElementById('dialog').innerHTML =
+       				'<a>TEST</a>'+
             		'<div class="dbox-dialog--content">'+
-            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+mapIter.next().value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+imageMap[keyLast]+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
             		'</br>'+
             		
             		
@@ -47,8 +52,8 @@
         		text.toString()+'</br>'+
         		key.toString()+'</br>'+
         		
-        		'</br><a href="#!">Close</a>'+
-        		'<a onclick="showMextImage('+key.toString()+')" href="#dialog">Next</a>'+
+        		'</br><a href="#!">Close</a></br>'+
+        		'<a onclick="javascript:showNextImage('+key.toString()+')" href="#dialog" text="Next">Next</a>'+
         		'</div>';
         	}
         </script>
