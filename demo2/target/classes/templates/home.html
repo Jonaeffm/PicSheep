@@ -18,6 +18,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
        		let imageMap = /*[[${images}]]*/ {};
+       		const mapIter = imageMap.entries();
+       		
+       		function showNextImage(key)
+       		{
+       			while (mapIter.key != key)
+       				{
+       				mapIter.next();
+       				}
+       			
+       			document.getElementById('dialog').innerHTML =
+            		'<div class="dbox-dialog--content">'+
+            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+mapIter.next().value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+            		'</br>'+
+            		
+            		
+            		'</br><a href="#!">Close</a>'+
+            		'<a href="#dialog" th:onclick="showNextImage('+key+')">Next</a>'+
+            		'</div>';
+       		}
+       	
 			function showImage(key,text, value)
         	{
         		document.getElementById('dialog').innerHTML =
@@ -26,8 +46,9 @@
         		'</br>'+
         		text.toString()+'</br>'+
         		key.toString()+'</br>'+
-        		imageMap[key]+'</br>'+
+        		
         		'</br><a href="#!">Close</a>'+
+        		'<a onclick="showMextImage('+key.toString()+')" href="#dialog">Next</a>'+
         		'</div>';
         	}
         </script>
