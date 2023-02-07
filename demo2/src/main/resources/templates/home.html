@@ -17,9 +17,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
-       		/*<![CDATA[*/
-			var imageMap = /*[[${images}]]*/ 'default';
-   			 /*]]>*/
+       		
+			var imageMapVar = new Map(images);
+   			 
 			function showImage(key,text, value)
         	{
         		document.getElementById('dialog').innerHTML =
@@ -28,7 +28,7 @@
         		'</br>'+
         		text.toString()+'</br>'+
         		key.toString()+'</br>'+
-        		imageMap.get(key)+'</br>'+
+        		imageMapVar[key]+'</br>'+
         		'</br><a href="#!">Close</a>'+
         		'</div>';
         	}
