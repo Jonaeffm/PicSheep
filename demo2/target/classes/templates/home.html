@@ -18,18 +18,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
        		
-			
+			var imageMapVar = [[${images}]];
    			 
 			function showImage(key,text, value)
         	{
-				var imageMapVar = [[${images}]];
         		document.getElementById('dialog').innerHTML =
         		'<div class="dbox-dialog--content">'+
         		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
         		'</br>'+
         		text.toString()+'</br>'+
         		key.toString()+'</br>'+
-        		imageMapVar.get(key)+'</br>'+
+        		
         		'</br><a href="#!">Close</a>'+
         		'</div>';
         	}
