@@ -17,14 +17,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
-        	var imageMap = /*[[${images}]]*/ 'default';
-			function showImage(text, value)
+        	var imageMap = /*[(${images})]*/'';
+			function showImage(key,text, value)
         	{
         		document.getElementById('dialog').innerHTML =
         		'<div class="dbox-dialog--content">'+
         		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
         		'</br>'+
         		text.toString()+'</br>'+
+        		key.toString()+'</br>'+
+        		imageMap.get(key)+'</br>'+
         		'</br><a href="#!">Close</a>'+
         		'</div>';
         	}
@@ -39,7 +41,7 @@
  		<span >
             <ul class="skills" >
                 <td  ><!--for every image object one tile.-->
-                 	<a th:each="image, index : ${images}" href="#dialog"  id="chooseImage">  <img th:each="imageclass:${imageclasses}"  th:if="${imageclass.id == image.key}" href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:data-text="${imageclass.name}" th:onclick="showImage(this.getAttribute('data-text'),this.getAttribute('data-images'))" id="imgObj" /></a>
+                 	<a th:each="image, index : ${images}" href="#dialog"  id="chooseImage">  <img th:each="imageclass:${imageclasses}"  th:if="${imageclass.id == image.key}" href="#dialog" th:src="${'data:image/jpeg;charset=utf-8;base64,'+image.value}" alt="" class="img"  width="100"  th:data-images="${image.value}" th:data-key="${image.key}" th:data-text="${imageclass.name}" th:onclick="showImage(this.getAttribute('data-key'),this.getAttribute('data-text'),this.getAttribute('data-images'))" id="imgObj" /></a>
                	</td><!--open it by clicking on it-->
             </ul>
        	</span>
