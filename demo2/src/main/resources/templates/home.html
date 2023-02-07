@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        	<script th:inline="javascript">
        		
-			var imageMapVar = [[${images}]];
+			var imageMapVar = new Hash([[${images}]]);
    			 
 			function showImage(key,text, value)
         	{
@@ -28,7 +28,7 @@
         		'</br>'+
         		text.toString()+'</br>'+
         		key.toString()+'</br>'+
-        		
+        		/*imageMapVar.get(key)+'</br>'+*/
         		'</br><a href="#!">Close</a>'+
         		'</div>';
         	}
