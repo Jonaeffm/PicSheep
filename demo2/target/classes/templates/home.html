@@ -20,19 +20,12 @@
        		let imageMap = /*[[${images}]]*/ {};
        		var bool = 0;
        		
-       		function showNextImage(keyLast)
+       		function showNextImage()
        		{
        		
        			document.getElementById('dialog').innerHTML =
-       				
             		'<div class="dbox-dialog--content">'+
             		'TEST</br>'+
-            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+imageMap[keyLast]+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
-            		'</br>'+
-            		
-            		
-            		'</br><a href="#!">Close</a>'+
-            		'<a href="#dialog" th:onclick="showNextImage('+key+')">Next</a>'+
             		'</div>';
        		}
        	
@@ -47,13 +40,17 @@
         		key.toString()+'</br>'+
         		
         		'</br><a href="#!">Close</a></br>'+
-        		'<button type="button"'+
-        		'className="btn btn-default"'+
-        		'onClick="invoke"'+
-        		'name=\'showNextImage\''+
-        		'data-arg1=\''+key.toString()+'\'>showNextImage</button>'+
+        		
         		'</div>';
-        		 
+        		var button = document.createElement('button');
+        		  button.innerHTML = 'click me';
+        		  button.onclick = function(){
+        		    showNextImage();return false;
+        		  };
+        		  // where do we want to have the button to appear?
+        		  // you can append it to another element just by doing something like
+        		  // document.getElementById('foobutton').appendChild(button);
+        		  document.getElementById('dialog').appendChild(button);
         	}
         </script>
     </head>
