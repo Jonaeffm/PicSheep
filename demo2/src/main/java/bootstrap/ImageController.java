@@ -36,6 +36,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.thymeleaf.util.ArrayUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import domain.Album;
 import domain.Image;
 import jakarta.servlet.http.HttpServletResponse;
@@ -56,6 +60,17 @@ public class ImageController {
 	@Autowired
 	private IImageService imageService;//contains functions for entity Image
 	
+    // Create ObjectMapper object.
+    String listToJson(List parameter) throws JsonProcessingException
+    {
+	ObjectMapper mapper = new ObjectMapper();
+    mapper.enable(SerializationFeature.INDENT_OUTPUT);
+    
+    String json = mapper.writeValueAsString(parameter);
+    return json;
+    }
+    
+    
 	byte[] imageJPG(String path) throws IOException
 	{
 		//read JPG to bytearray
