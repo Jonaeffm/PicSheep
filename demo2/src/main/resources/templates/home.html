@@ -47,9 +47,13 @@
         		key.toString()+'</br>'+
         		
         		'</br><a href="#!">Close</a></br>'+
-        		'<button onclick="showNextImage(\''+key.toString()+'\')">Try it</button>'+
+        		'<button type="button"'+
+        		'className="btn btn-default"'+
+        		'onClick="invoke"'+
+        		'name=\'showNextImage\''+
+        		'data-arg1=\''+key.toString()+'\'>showNextImage</button>'+
         		'</div>';
-        		
+        		 
         	}
         </script>
     </head>
