@@ -31,3 +31,14 @@ th:if="${image.key} % 4 == 0"
   </td></pre></div>
    
     </tr>
+
+    
+    	for (let [key, value] of imageMap) {
+       				if (bool)
+       					{keyLast=key;
+       					break;
+       					}
+       				if (key == keyLast )
+       					{bool=1;}
+       				}
+       			
