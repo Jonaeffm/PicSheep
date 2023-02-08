@@ -16,7 +16,7 @@
         <title>images</title><!--site title-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       	<script th:inline="javascript">
+       	<script layout:fragment="script" th:inline="javascript">
        		
        		var bool = 0;
        		var lastKey=0;
@@ -24,6 +24,9 @@
        		function showNextImage()
        		{
        			let imageMap = /*[[${images}]]*/ {};
+       			
+       			
+
        			
        			document.getElementById('dialog').innerHTML =
             		'<div class="dbox-dialog--content">'+
