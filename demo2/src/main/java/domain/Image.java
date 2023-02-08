@@ -21,7 +21,7 @@ public class Image {
 @GeneratedValue
 Long id;
 
-@JsonProperty("content")
+
 @Lob
 byte[] content;
 
