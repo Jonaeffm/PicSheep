@@ -214,6 +214,12 @@ public class ImageController {
 	      }
 	   
 	    
+	    String str2 = new ObjectMapper().writeValueAsString(productBase64Images);
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("Base64Map.json"));
+	       writer.write(str2);
+	       
+	       writer.close();
+	    
 	    model.addAttribute("imageclasses",images);//Thymeleaf models
 	    model.addAttribute("images", productBase64Images);
 	    //model.addAttribute("images", imageDbRepository.findAll());
