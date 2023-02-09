@@ -33,12 +33,13 @@
        			request.send(null);
        			var jsonData = JSON.parse(request.responseText);
 
+       		
 
-       			
+       	        
        			document.getElementById('dialog').innerHTML =
             		'<div class="dbox-dialog--content">'+
             		'TEST</br>'+
-            		jsonData.length+'</br>'+
+            		jsonData["image"]+'</br>'+
             		'</div>';
        		}
        	
