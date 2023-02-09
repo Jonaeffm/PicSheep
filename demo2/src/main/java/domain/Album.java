@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,8 @@ public class Album {
 	@GeneratedValue
 	Long id;
 	String name;
+	
+	@JsonIgnore
 	 @OneToMany(targetEntity= Image.class, cascade= CascadeType.ALL)
 	    @JoinColumn(name="album_image",referencedColumnName = "AlBUM_ID")
 	    private Collection<Image> images;
