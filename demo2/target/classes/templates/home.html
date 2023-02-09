@@ -21,12 +21,22 @@
        		var bool = 0;
        		var lastKey=0;
        		
+       		function readJSON(file) {
+       		    var request = new XMLHttpRequest();
+       		    request.open('GET', file, false);
+       		    request.send(null);
+       		    if (request.status == 200)
+       		        return request.responseText;
+       		};
+
+       		
+       		
        		function showNextImage()
        		{
 
        			
-
-       			console.log(Object.entries(JSON.parse(/*[[${images}]]*/)));
+       			var temp = readJSON('Base64Map.json');
+       			console.log(temp);
 
        			document.getElementById('dialog').innerHTML =
             		'<div class="dbox-dialog--content">'+
