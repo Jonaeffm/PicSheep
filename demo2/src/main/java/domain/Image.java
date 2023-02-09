@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,10 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
+@JsonRootName(value = "image")
+@JsonPropertyOrder({  "id","name","album" })
 @Data
 @NoArgsConstructor
 public class Image {
@@ -32,4 +37,6 @@ String name;
 @JsonProperty("album")
 @ManyToOne()
 private Album album;
+
+
 }
