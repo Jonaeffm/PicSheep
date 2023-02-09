@@ -23,15 +23,15 @@
        		
        		function showNextImage()
        		{
-       			let imageMap = /*[[${images}]]*/{} ;
+
        			
 
-
+       			console.log(Object.entries(JSON.parse(/*[[${images}]]*/)));
 
        			document.getElementById('dialog').innerHTML =
             		'<div class="dbox-dialog--content">'+
             		'TEST</br>'+
-            		imageMap[lastKey]+'</br>'+
+            		'</br>'+
             		'</div>';
        		}
        	
