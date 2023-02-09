@@ -2,6 +2,7 @@ package domain;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ public class Image {
 @GeneratedValue
 Long id;
 
-
+@JsonIgnore
 @Lob
 byte[] content;
 
