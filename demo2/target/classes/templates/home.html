@@ -35,13 +35,13 @@
        		{
 
        			
-       			var temp = readJSON('Base64Map.json');
-       			console.log(temp);
+       			const map = new Map(Object.entries(/*[[${images}]]*/));
+       			
 
        			document.getElementById('dialog').innerHTML =
             		'<div class="dbox-dialog--content">'+
             		'TEST</br>'+
-            		'</br>'+
+            		map.get(lastKey)+'</br>'+
             		'</div>';
        		}
        	
