@@ -183,7 +183,7 @@ public class ImageController {
 	@GetMapping("/images")
 	public String getHomePage(Model model,HttpServletResponse response) throws IOException {
 		List<Image> images = imageDbRepository.findAll();//all images 
-		Map<Long, String> productBase64Images = new HashMap<>();//images in base64
+		HashMap<Long, String> productBase64Images = new HashMap<>();//images in base64
 	    for(Image image: images){               
 	            String contHeader = Base64.encodeBase64String(image.getContent());//code
 	        	productBase64Images.put(image.getId(), contHeader);//save
