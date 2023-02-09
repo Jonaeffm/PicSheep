@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -197,7 +199,18 @@ public class ImageController {
 	        System.out.println("Successfully wrote to the file.");
 	      } catch (IOException e) {
 	        System.out.println("An error occurred.");
-	        e.printStackTrace();
+	        
+	        BufferedWriter writer = new BufferedWriter(new FileWriter("error.txt"));
+		    
+	        StringWriter sw = new StringWriter();
+	        PrintWriter pw = new PrintWriter(sw);
+	        e.printStackTrace(pw);
+	        
+	        writer.write(sw.toString());
+		       
+		       writer.close();
+	        
+	        //e.printStackTrace();
 	      }
 	   
 	    
