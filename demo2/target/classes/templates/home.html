@@ -25,7 +25,14 @@
        		{
        			let imageMap = /*[[${images}]]*/ {};
        			
-       		 	
+
+
+
+       			var request = new XMLHttpRequest();
+       			request.open("GET","ImageClass.json", false);
+       			request.send(null);
+       			var jsonData = JSON.parse(request.responseText);
+
 
        			
        			document.getElementById('dialog').innerHTML =
