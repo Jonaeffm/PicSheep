@@ -42,7 +42,7 @@
        			while(iterator1.next().value!= map.get(lastKey))
        				{}
        			
-       			
+       		
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
 	            		'TEST</br>'+
@@ -50,7 +50,14 @@
 	            		
 	            		'</div>';
 	            	
-
+       			var button = document.createElement('button');
+      		  button.innerHTML = 'click me';
+      		  button.onclick = function(){
+      		    showNextImage();return false;
+      		  };
+      		  
+      		  document.getElementById('dialog').appendChild(button);
+      		  
        			
        		}
        	
