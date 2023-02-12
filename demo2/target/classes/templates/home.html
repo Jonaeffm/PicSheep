@@ -44,10 +44,10 @@
        			
        			const iterator1 = map.values();
 				
-       			while(iterator1.prev().value!= map.get(lastKey))
+       			while(iterator1.previous().value!= map.get(lastKey))
        				{}
        			
-       			lastKey=getByValue(map,iterator1.prev().value)
+       			lastKey=getByValue(map,iterator1.previous().value)
        			
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
