@@ -152,12 +152,19 @@ public class ImageController {
 		i2.setName("testImagelarge");
 		testID=  imageDbRepository.save(i2).getId();
 		
+		Image i3 = new Image();
+		i3.setContent(imageJPG("/home/jon/Bilder/gemischt/a4.jpg"));//______TESTFILE2
+		i3.setName("testImagelarge2");
+		testID=  imageDbRepository.save(i2).getId();
+		
 		Album a = new Album();
 		a.setName("testAlbum");
 		a.getImages().add(i);
 		i.setAlbum(a);
 		a.getImages().add(i2);
 		i2.setAlbum(a);
+		a.getImages().add(i3);
+		i3.setAlbum(a);
 		albumRepository.save(a);
 		//downloadImage(testID);
 		//String returnStr = "redirect:/image/"+testID;
