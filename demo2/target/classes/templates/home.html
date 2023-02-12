@@ -33,17 +33,23 @@
        		
        		function showNextImage()
        		{
-
+				bool=0;
        			
        			const map = new Map(Object.entries(/*[[${images}]]*/));
        			
+       			const iterator1 = map.values();
 
+       			
+       			
        			document.getElementById('dialog').innerHTML =
-            		'<div class="dbox-dialog--content">'+
-            		'TEST</br>'+
-            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
-            		
-            		'</div>';
+	            		'<div class="dbox-dialog--content">'+
+	            		'TEST</br>'+
+	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+iterator1.next().value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+	            		
+	            		'</div>';
+	            	
+
+       			
        		}
        	
 			function showImage(key,text, value)
