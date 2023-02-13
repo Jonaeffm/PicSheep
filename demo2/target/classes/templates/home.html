@@ -47,9 +47,10 @@
        			var i = 0;
 				while(array[i]=iterator1.next().value)
        				{i++;}
-       			for(i=array.length;i=0;i--)
+       			for(i=array.length-1;i=0;i--)
        				{
        				if(array[i]==map.get(lastKey)){
+       					bool=1;
        					i--;
        					lastKey=getByValue(map,array[i]);}
        				}
@@ -57,7 +58,7 @@
        			
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
-	            		'TEST</br>'+array.length+'</br>'+
+	            		'TEST</br>'+array.length+' '+bool+'</br>'+
 	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
 	            		
 	            		'</div>';
