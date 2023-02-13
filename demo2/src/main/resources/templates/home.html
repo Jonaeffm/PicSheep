@@ -94,6 +94,8 @@
        			
        			lastKey=getByValue(map,iterator1.next().value)
        			
+       			if(map.get(lastKey)){
+       			
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
 	            		'TEST</br>'+
@@ -113,7 +115,7 @@
     		  document.getElementById('dialog').appendChild(button);
         		document.getElementById('dialog').appendChild(button2);
       		  
-       			
+       			}
        		}
        	
 			function showImage(key,text, value)
