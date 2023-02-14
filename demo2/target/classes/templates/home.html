@@ -94,7 +94,9 @@
        		
        		function showNextImage()
        		{
-       			bestFetch('./ImageClass.json');
+       			fetch('./ImageClass.json')
+       		    .then((response) => response.json())
+       		    .then((json) => console.log(json));
 
 				bool=0;
        			var beforeLast = 0;
