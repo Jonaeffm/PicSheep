@@ -94,11 +94,11 @@
        	async function printJSON() {
 			    const response = await fetch("./ImageClass.json");
 			    const json = await response.json();
-			    console.log(json);
+			    return json;
 			}
        		function showNextImage()
        		{
-       			printJSON();
+       			var ia = printJSON();
 
 				bool=0;
        			var beforeLast = 0;
@@ -115,7 +115,7 @@
        			
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
-	            		'TEST</br>'+'</br>'+
+	            		'TEST</br>'+ia.length+'</br>'+
 	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
 	            		
 	            		'</div>';
