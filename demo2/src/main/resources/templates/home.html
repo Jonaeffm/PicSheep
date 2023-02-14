@@ -91,12 +91,14 @@
                 console.log('Error!', e);
               }
              }
-       		
+       	async function printJSON() {
+			    const response = await fetch("./ImageClass.json");
+			    const json = await response.json();
+			    console.log(json);
+			}
        		function showNextImage()
        		{
-       			fetch('./ImageClass.json')
-       		    .then((response) => response.json())
-       		    .then((json) => console.log(json));
+       			printJSON();
 
 				bool=0;
        			var beforeLast = 0;
