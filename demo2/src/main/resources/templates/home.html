@@ -98,8 +98,8 @@
 			}
        		function showNextImage()
        		{
-       			let ia = new Array();
-       			ia = printJSON();
+       			let ia = new Array(Object.entries(printJSON()));
+       			
 
 				bool=0;
        			var beforeLast = 0;
