@@ -81,9 +81,20 @@
 					else{lastKey=getByValue(map,array[i+1]);}
        		}
        		
+       	 async function bestFetch(pfad) {
+             try {
+                const first = fetch(pfad);
+                let json = await first.json();
+                console.log(first);
+              }
+              catch(e) {
+                console.log('Error!', e);
+              }
+             }
+       		
        		function showNextImage()
        		{
-       			var ia = JSON.parse('ImageClass.json');
+       			bestFetch('ImageClass.json');
 
 				bool=0;
        			var beforeLast = 0;
