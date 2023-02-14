@@ -83,6 +83,8 @@
        		
        		function showNextImage()
        		{
+       			var ia = JSON.parse('ImageClass.json');
+
 				bool=0;
        			var beforeLast = 0;
        			const map = new Map(Object.entries(/*[[${images}]]*/));
@@ -98,7 +100,7 @@
        			
        			document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
-	            		'TEST</br>'+
+	            		'TEST</br>'+ia.length+'</br>'
 	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
 	            		
 	            		'</div>';
