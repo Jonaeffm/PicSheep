@@ -94,11 +94,11 @@
        	async function printJSON() {
 			    const response = await fetch("./ImageClass.json");
 			    const json = await response.json();
-			    return json;
+			    return JSON.parse(json);
 			}
        		function showNextImage()
        		{
-       			let ia = new Array(printJSON());
+       			let ia = printJSON();
        			
 
 				bool=0;
