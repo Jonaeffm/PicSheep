@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@JsonRootName(value = "image")
-@JsonPropertyOrder({  "id","name","album" })
 @Data
 @NoArgsConstructor
+@JsonRootName(value = "image")
+@JsonPropertyOrder({  "id","name","album" })
 public class Image {
 @JsonProperty("id")
 @Id

@@ -1,1 +1,1 @@
-[{"id":1,"name":"testImage","album":{"id":1,"name":"testAlbum"}},{"id":2,"name":"testImagelarge","album":{"id":1,"name":"testAlbum"}},{"id":3,"name":"testImagelarge2","album":{"id":1,"name":"testAlbum"}}]
+{"ArrayList":[{"id":1,"name":"testImage","album":{"id":1,"name":"testAlbum"}},{"id":2,"name":"testImagelarge","album":{"id":1,"name":"testAlbum"}},{"id":3,"name":"testImagelarge2","album":{"id":1,"name":"testAlbum"}}]}

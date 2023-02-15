@@ -45,6 +45,7 @@ import org.thymeleaf.util.ArrayUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -75,7 +76,8 @@ public class ImageController {
     {
     	final ObjectNode jsonObj;
     	ObjectMapper mapper = new ObjectMapper();
-   
+    	mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE); 
+    	mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
     	
         String temp = mapper.writeValueAsString(parameter);
     	
