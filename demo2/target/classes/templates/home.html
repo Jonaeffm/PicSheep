@@ -120,7 +120,8 @@ var reader = new FileReader();
 reader.onload = function(event) {
     console.log('File content:', event.target.result);
 };
-ia=reader.readAsText(fileia);
+iaString=reader.readAsText(fileia);
+ia= JSON.parse(iaString);
 
 				bool=0;
        			var beforeLast = 0;
