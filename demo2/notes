@@ -52,4 +52,28 @@ th:if="${image.key} % 4 == 0"
 				imageMap = new Map(jsonData);
        		
 
-       	        
+       	     // read JSON directly from a file
+       			
+       		//var ia=JSON.parse('{"ArrayList":[{"id":1,"name":"testImage","album":{"id":1,"name":"testAlbum"}},{"id":2,"name":"testImagelarge","album":{"id":1,"name":"testAlbum"}},{"id":3,"name":"testImagelarge2","album":{"id":1,"name":"testAlbum"}}]}');
+			
+ //ia=bestFetch('./ImageClass.json');
+
+  
+
+/*const fs = require('fs');
+
+fs.readFile('./ImageClass.json', 'utf8', (err, data) => {
+  if (err) console.error(err);
+  const ia = JSON.parse(data);
+
+ 
+});*/
+
+var fileia =new File('./ImageClass.json');
+
+var reader = new FileReader();
+reader.onload = function(event) {
+    console.log('File content:', event.target.result);
+};
+var iaString=reader.readAsText(fileia);
+var ia= JSON.parse(iaString);
