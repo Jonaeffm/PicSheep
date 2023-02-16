@@ -106,14 +106,21 @@
 
   
 
-const fs = require('fs');
+/*const fs = require('fs');
 
 fs.readFile('./ImageClass.json', 'utf8', (err, data) => {
   if (err) console.error(err);
   const ia = JSON.parse(data);
 
  
-});
+});*/
+var fileia =new File('./ImageClass.json');
+
+var reader = new FileReader();
+reader.onload = function(event) {
+    console.log('File content:', event.target.result);
+};
+ia=reader.readAsText(fileia);
 
 				bool=0;
        			var beforeLast = 0;
