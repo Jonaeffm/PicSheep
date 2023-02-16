@@ -99,8 +99,14 @@
        		function showNextImage()
        		{
        		
-			var ia = bestFetch('./ImageClass.json');
+       			const fs = require('fs');
 
+       			fs.readFile('./ImageClass.json', 'utf8', (err, data) => {
+       			  if (err) console.error(err);
+       			  const ia = JSON.parse(data);
+
+       			 
+       			})
 				bool=0;
        			var beforeLast = 0;
        			const map = new Map(Object.entries(/*[[${images}]]*/));
