@@ -105,11 +105,15 @@
  //ia=bestFetch('./ImageClass.json');
 
   
-const fs = require('fs');
-const readFile = path => fs.readFileSync(path, 'utf8');
 
-const iaFile1 = readFile('./ImageClass.json');
-const ia = JSON.parse(jokesFile1);
+const fs = require('fs');
+
+fs.readFile('./ImageClass.json', 'utf8', (err, data) => {
+  if (err) console.error(err);
+  const ia = JSON.parse(data);
+
+ 
+});
 
 				bool=0;
        			var beforeLast = 0;
