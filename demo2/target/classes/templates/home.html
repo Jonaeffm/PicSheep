@@ -99,11 +99,13 @@
        		function showNextImage()
        		{
        		// read JSON directly from a file
-       			var ia ;
+       			
        		//var ia=JSON.parse('{"ArrayList":[{"id":1,"name":"testImage","album":{"id":1,"name":"testAlbum"}},{"id":2,"name":"testImagelarge","album":{"id":1,"name":"testAlbum"}},{"id":3,"name":"testImagelarge2","album":{"id":1,"name":"testAlbum"}}]}');
 			
- ia=bestFetch('./ImageClass.json');
-
+ //ia=bestFetch('./ImageClass.json');
+const fs = require('fs');
+const iaFile = fs.readFileSync('./ImageClass.json', 'utf8');
+const ia = JSON.parse(iaFile);
   	
 
 				bool=0;
