@@ -96,17 +96,29 @@
 			    const json = await response.json();
 			    return json;
 			}
+       	
+       	function readTextFile(file)
+       	{
+       	    var rawFile = new XMLHttpRequest();
+       	    rawFile.open("GET", file, false);
+       	    rawFile.onreadystatechange = function ()
+       	    {
+       	        if(rawFile.readyState === 4)
+       	        {
+       	            if(rawFile.status === 200 || rawFile.status == 0)
+       	            {
+       	                var allText = rawFile.responseText;
+       	                alert(allText);
+       	            }
+       	        }
+       	    }
+       	    rawFile.send(null);
+       	}
+       	
        		function showNextImage()
        		{
        		
-       			const fs = require('fs');
-
-       			fs.readFile('./ImageClass.json', 'utf8', (err, data) => {
-       			  if (err) console.error(err);
-       			  const ia = JSON.parse(data);
-
-       			 
-       			})
+       			readTextFile("./ImageClass.json");
 				bool=0;
        			var beforeLast = 0;
        			const map = new Map(Object.entries(/*[[${images}]]*/));
