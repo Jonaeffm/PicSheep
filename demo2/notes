@@ -77,3 +77,9 @@ reader.onload = function(event) {
 };
 var iaString=reader.readAsText(fileia);
 var ia= JSON.parse(iaString);
+
+ia.ArrayList.length+
+
+var ia;
+       		
+       			ia=JSON.parse(readTextFile("./ImageClass.json"));
