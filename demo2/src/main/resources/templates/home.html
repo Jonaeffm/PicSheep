@@ -108,7 +108,7 @@
        	            if(rawFile.status === 200 || rawFile.status == 0)
        	            {
        	                var allText = rawFile.responseText;
-       	                alert(allText);
+       	                return allText;
        	            }
        	        }
        	    }
@@ -117,8 +117,9 @@
        	
        		function showNextImage()
        		{
+       			var ia;
        		
-       			readTextFile("./ImageClass.json");
+       			ia=JSON.parse(readTextFile("./ImageClass.json"));
 				bool=0;
        			var beforeLast = 0;
        			const map = new Map(Object.entries(/*[[${images}]]*/));
