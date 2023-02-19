@@ -117,7 +117,15 @@
        	
        		function showNextImage()
        		{
-       			var ia =JSON.parse(readTextFile("/home/jon/Downloads/demo2/ImageClass.json"));
+       			const fs = require("fs");
+
+       		
+       			fs.readFile("/home/jon/Downloads/demo2/ImageClass.json", (err, data) => {
+       			  if (err) throw err;
+
+       			  console.log(data.toString());
+       			});
+       			
        			
 				bool=0;
        			var beforeLast = 0;
