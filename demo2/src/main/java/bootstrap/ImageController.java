@@ -30,12 +30,16 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -52,7 +56,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import domain.Album;
+import domain.Budget;
 import domain.Image;
+import domain.ProgramUser;
 import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
@@ -267,5 +273,29 @@ public class ImageController {
 	    //model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";
 	}
+	@RequestMapping(value = "/addImage", method = RequestMethod.GET)
+	public String showStudentInfo(Model model) {
+		
+		Image b = new Image();
+		
+		model.addAttribute("images",b );
+		
+		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+		return "insert";
+	}
+
+	@RequestMapping(value = "/addBudget", method = RequestMethod.POST)
+	 
+	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd) {
+		imageDbRepository.save(imageToAdd);
+		
+		
+		
+		
+		
 	
+	
+		return "success";
+	}
+
 }

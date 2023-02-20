@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  
+   <form method="post" th:object="${images}">
+
+<label for="budget.product">product</label> 
+<input type="text" class="form-control" id="product"  th:field="*{product}" placeholder="Enter product" />                  
+                        <label for="name">name</label> 
+                        <input type="text" class="form-control" id="name" th:field="*{name}"/>
+                        
+                        <label for="album">album</label> 
+                        <input type="text" class="form-control" id="album" th:field="*{album}"/>
+                    
+                         
+<!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
+
+<input type="submit" value="Submit" class="btn btn-primary" />
+</body>
+
+
+</html>
