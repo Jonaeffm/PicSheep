@@ -72,8 +72,8 @@
       		    			showNextImage();return false;
       		  };
       		  
-      		  	document.getElementById('dialog').appendChild(button);
-      			document.getElementById('dialog').appendChild(button2);
+      		  	document.getElementById('dialog').appendChild(button2);
+      			document.getElementById('dialog').appendChild(button);
       		  
        			}
 					else{lastKey=getByValue(map,array[i+1]);}
@@ -109,8 +109,8 @@
     		  button.onclick = function(){
     		    showNextImage();return false;
     		  };
-    		  document.getElementById('dialog').appendChild(button);
-        		document.getElementById('dialog').appendChild(button2);
+    		  document.getElementById('dialog').appendChild(button2);
+        		document.getElementById('dialog').appendChild(button);
       		  
        			}else{lastKey=getByValue(map,beforeLast);}
        		}
@@ -136,8 +136,8 @@
 	  button.onclick = function(){
 	    showNextImage();return false;
 	  };
-        		  document.getElementById('dialog').appendChild(button);
         		  document.getElementById('dialog').appendChild(button2);
+        		  document.getElementById('dialog').appendChild(button);
           		  
         		  lastKey = key;
         	}
