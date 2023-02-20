@@ -81,39 +81,7 @@
 					else{lastKey=getByValue(map,array[i+1]);}
        		}
        		
-       	 async function bestFetch(pfad) {
-             try {
-                const first = fetch(pfad);
-                let json = await first.json();
-                return json;
-              }
-              catch(e) {
-                console.log('Error!', e);
-              }
-             }
-       	async function printJSON(pfad) {
-			    const response = await fetch(pfad);
-			    const json = await response.json();
-			    return json;
-			}
        	
-       	function readTextFile(file)
-       	{
-       	    var rawFile = new XMLHttpRequest();
-       	    rawFile.open("GET", file, false);
-       	    rawFile.onreadystatechange = function ()
-       	    {
-       	        if(rawFile.readyState === 4)
-       	        {
-       	            if(rawFile.status === 200 || rawFile.status == 0)
-       	            {
-       	                var allText = rawFile.responseText;
-       	                return allText;
-       	            }
-       	        }
-       	    }
-       	    rawFile.send(null);
-       	}
        	function readSingleFile(evt) {
             var f = evt.target.files[0];
             if (f) {
@@ -129,14 +97,7 @@
        	
        		function showNextImage()
        		{
-       			const fs = require("fs");
-
-       		
-       			fs.readFile("/home/jon/Downloads/demo2/ImageClass.json", (err, data) => {
-       			  if (err) throw err;
-
-       			  console.log(data.toString());
-       			});
+       			readSingleFile("./ImageClass.json");
        			
        			
 				bool=0;
