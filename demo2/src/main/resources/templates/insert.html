@@ -6,16 +6,16 @@
 </head>
 <body>
   
-   <form method="post" th:object="${images}">
+   <form method="post" >
 
 
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />                
                        
                         
-                       <input type="text" th:value="*{name}" name="name"/>
+                       <input type="text" th:value="${images.name}" name="name"/>
   
    
-      <input type="text" th:value="${imagePath.path}" name="status"/>
+      <input type="text" th:value="${imagePath.path}" name="path"/>
                     
                          
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->

@@ -281,7 +281,7 @@ public class ImageController {
 		
 		model.addAttribute("images",b );
 		ImagePath ip = new ImagePath();
-		model.addAttribute("imagesPath",ip );
+		model.addAttribute("imagePath",ip );
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
 		return "insert";
 	}
