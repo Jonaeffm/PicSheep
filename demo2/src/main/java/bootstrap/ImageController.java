@@ -288,7 +288,7 @@ public class ImageController {
 	 
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("path") String path) {
 		imageDbRepository.save(imageToAdd);
-		
+		System.out.println(path);
 		
 		
 		
