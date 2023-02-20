@@ -56,9 +56,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import domain.Album;
-import domain.Budget;
+
 import domain.Image;
-import domain.ProgramUser;
+
 import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
