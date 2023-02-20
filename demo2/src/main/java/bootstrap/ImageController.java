@@ -286,9 +286,9 @@ public class ImageController {
 
 	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	 
-	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd) {
+	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("path") String path) {
 		imageDbRepository.save(imageToAdd);
-		System.out.print("TEST upload function");
+		
 		
 		
 		
