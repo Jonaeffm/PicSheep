@@ -9,12 +9,11 @@
    <form method="post" th:object="${images}">
 
 
-                
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />                
                         <label for="name">name</label> 
                         <input type="text" class="form-control" id="name" th:field="*{name}"/>
                         
-                        <label for="album">album</label> 
-                        <input type="text" class="form-control" id="album" th:field="*{album}"/>
+                       
                     
                          
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
