@@ -284,18 +284,18 @@ public class ImageController {
 		return "insert";
 	}
 
-	@RequestMapping(value = "/addBudget", method = RequestMethod.POST)
+	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	 
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd) {
 		imageDbRepository.save(imageToAdd);
-		
+		System.out.print("TEST upload function");
 		
 		
 		
 		
 	
 	
-		return "success";
+		return "home";
 	}
 
 }
