@@ -23,6 +23,7 @@ import java.util.Optional;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -58,7 +59,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import domain.Album;
 
 import domain.Image;
-
+import domain.ImagePath;
 import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
@@ -279,16 +280,18 @@ public class ImageController {
 		Image b = new Image();
 		
 		model.addAttribute("images",b );
-		
+		ImagePath ip = new ImagePath();
+		model.addAttribute("imagesPath",ip );
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
 		return "insert";
 	}
 
 	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	 
-	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("path") String path) {
+	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
 		imageDbRepository.save(imageToAdd);
-		System.out.println(path);
+		System.out.print("test "+path.getPath());
+		System.out.println("Name: "+imageToAdd.getName());
 		
 		
 		
