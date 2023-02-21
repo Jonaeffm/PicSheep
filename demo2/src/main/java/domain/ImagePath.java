@@ -18,4 +18,5 @@ public class ImagePath {
 	@GeneratedValue
 	Long id;
 String path;
+long albumId;
 }

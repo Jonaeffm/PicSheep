@@ -19,8 +19,8 @@
                     
              
 <select class="form-control" id="dropDownList">
-    <option value="0">select option</option>
-    <option th:each="option : ${albums}" th:value="${option.id}" th:text="${option.name}" th:field="${images.album.id}"></option>
+    
+    <option th:each="option : ${albums}" th:value="${option.id}" th:text="${option.name}" th:field="${imagePath.albumId}"></option>
 </select>
          
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
