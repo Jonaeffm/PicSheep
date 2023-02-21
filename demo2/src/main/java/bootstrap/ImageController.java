@@ -295,6 +295,7 @@ public class ImageController {
 		imageDbRepository.save(imageToAdd);
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
+		System.out.println("Album: "+imageToAdd.getAlbum().getName());
 		
 		
 		
