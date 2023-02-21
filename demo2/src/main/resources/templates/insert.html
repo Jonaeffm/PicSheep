@@ -20,7 +20,7 @@
              
 <select class="form-control" id="dropDownList">
     <option value="0">select option</option>
-    <option th:each="option : ${albums}" th:value="${option.id}" th:text="${option.name}"></option>
+    <option th:each="option : ${albums}" th:value="${images.album}" th:text="${option.name}"></option>
 </select>
          
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
