@@ -17,10 +17,12 @@
    
       <input type="text" th:value="${imagePath.path}" name="path"/>
                     
-             <form:select path="AlbumList" multiple="false" size="1">
-<form:options items="${AlbumList}" itemValue="id" itemLabel="name"/>
-</form:select>
-</form:form>            
+             
+<select class="form-control" id="dropDownList">
+    <option value="0">select option</option>
+    <option th:each="option : ${albums}" th:value="${option.id}" th:text="${option.name}"></option>
+</select>
+         
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
 
 <input type="submit" value="Submit" class="btn btn-primary" />
