@@ -282,6 +282,9 @@ public class ImageController {
 		model.addAttribute("images",b );
 		ImagePath ip = new ImagePath();
 		model.addAttribute("imagePath",ip );
+		List AlbumList = new ArrayList();
+		AlbumList=albumRepository.findAll();
+		model.addAttribute("albums",AlbumList);
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
 		return "insert";
 	}
