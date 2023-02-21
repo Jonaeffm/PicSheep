@@ -278,7 +278,9 @@ public class ImageController {
 	public String showStudentInfo(Model model) {
 		
 		Image b = new Image();
-		
+		Album a=new Album();
+		b.setAlbum(a);
+		a.getImages().add(b);
 		model.addAttribute("images",b );
 		ImagePath ip = new ImagePath();
 		model.addAttribute("imagePath",ip );
