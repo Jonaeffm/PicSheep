@@ -120,13 +120,16 @@ public class ImageController {
 	 public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
 	
 	 @PostMapping("/upload") 
-	 		public String uploadImage(Model model, @RequestParam("image") MultipartFile file) throws IOException {
-	        StringBuilder fileNames = new StringBuilder();
+	 		public String uploadImage(Model model, @RequestParam("image") MultipartFile file) throws Exception {
+	        /*StringBuilder fileNames = new StringBuilder();
 	        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
 	        fileNames.append(file.getOriginalFilename());
 	        Files.write(fileNameAndPath, file.getBytes());
 	        model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
-	        return "imageupload/index";
+	        */
+		 uploadImage(file);
+		 return "hw";
+		 
 	    }
 	
 	@PostMapping
