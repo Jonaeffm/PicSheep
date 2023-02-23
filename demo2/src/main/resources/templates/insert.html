@@ -13,9 +13,9 @@
                        
                         
                        <input type="text" th:value="${images.name}" name="name"/>
-  <input type="file" name="file" class="form-control-file">
+  <input type="file" name="file" class="form-control-file" th:value="${imagePath.path}">
    
-      <input type="text" th:value="${imagePath.path}" name="path"/>
+      
                     
              
 <select class="form-control" id="dropDownList" th:field="${imagePath.albumId}">
