@@ -12,16 +12,11 @@
   
                        
                         
-                       <input type="text" th:value="${images.name}" name="name"/>
-  <input type="file" name="file" accept="image/jpeg" class="form-control-file" >
+                      
+  <input type="file" name="file" class="form-control-file" >
    
       
-                    
-             
-<select class="form-control" id="dropDownList" th:field="${imagePath.albumId}">
-    
-    <option th:each="option : ${albums}" th:value="${option.id}" th:text="${option.name}" ></option>
-</select>
+ 
          
 <!--    <button type="submit" class="btn btn-primary">Sign in</button> -->
 

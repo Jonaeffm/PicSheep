@@ -292,7 +292,7 @@ public class ImageController {
 	@RequestMapping(value = "/addImage", method = RequestMethod.GET)
 	public String showStudentInfo(Model model) {
 		
-		Image b = new Image();
+		/*Image b = new Image();
 		Album a=new Album();
 		b.setAlbum(a);
 		a.getImages().add(b);
@@ -301,12 +301,12 @@ public class ImageController {
 		model.addAttribute("imagePath",ip );
 		List AlbumList = new ArrayList();
 		AlbumList=albumRepository.findAll();
-		model.addAttribute("albums",AlbumList);
+		model.addAttribute("albums",AlbumList);*/
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
 		return "insert";
 	}
 
-	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	 
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
 		imageDbRepository.save(imageToAdd);
@@ -320,6 +320,6 @@ public class ImageController {
 	
 	
 		return "home";
-	}
+	}*/
 
 }
