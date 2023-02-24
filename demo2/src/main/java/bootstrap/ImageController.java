@@ -78,6 +78,7 @@ public class ImageController {
 	@Autowired
 	private IImageService imageService;//contains functions for entity Image
 	
+	Image cImage;
     // Create ObjectMapper object.
     String listToJson(List parameter) throws JsonProcessingException
     {
@@ -138,7 +139,8 @@ public class ImageController {
 		Image dbImage = new Image();
 		dbImage.setName(multipartImage.getName());
 		dbImage.setContent(multipartImage.getBytes());
-		return imageDbRepository.save(dbImage).getId();
+		cImage=dbImage;
+		return /*imageDbRepository.save(dbImage).getId();*/dbImage.getId();
 	}
 	//download image from database
 	@GetMapping(value = "/image/{imageId}", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -309,7 +311,12 @@ public class ImageController {
 	@RequestMapping(value = "/addImage2", method = RequestMethod.POST)
 	 
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
-		imageDbRepository.save(imageToAdd);
+		
+		Album a = albumRepository.findById(path.getAlbumId());
+		cImage.setAlbum();
+		cImage.setName(imageToAdd.getName());
+		
+		imageDbRepository.save(cImage);
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
 		System.out.println("Album: "+path.getAlbumId());
