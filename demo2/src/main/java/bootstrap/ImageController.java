@@ -128,7 +128,7 @@ public class ImageController {
 	        model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
 	        */
 		 uploadImage(file);
-		 return "hw";
+		 return "success";
 		 
 	    }
 	
@@ -289,6 +289,39 @@ public class ImageController {
 	    //model.addAttribute("images", imageDbRepository.findAll());
 	    return "home";
 	}
+	@RequestMapping(value = "/addImage2", method = RequestMethod.GET)
+	public String showStudentInfo2(Model model) {
+		
+		Image b = new Image();
+		Album a=new Album();
+		b.setAlbum(a);
+		a.getImages().add(b);
+		model.addAttribute("images",b );
+		ImagePath ip = new ImagePath();
+		model.addAttribute("imagePath",ip );
+		List AlbumList = new ArrayList();
+		AlbumList=albumRepository.findAll();
+		model.addAttribute("albums",AlbumList);
+		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+		return "insert2";
+	}
+
+	@RequestMapping(value = "/addImage2", method = RequestMethod.POST)
+	 
+	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
+		imageDbRepository.save(imageToAdd);
+		System.out.print("test "+path.getPath());
+		System.out.println("Name: "+imageToAdd.getName());
+		System.out.println("Album: "+path.getAlbumId());
+		
+		
+		
+		
+	
+	
+		return "home";
+	}
+
 	@RequestMapping(value = "/addImage", method = RequestMethod.GET)
 	public String showStudentInfo(Model model) {
 		
@@ -322,4 +355,5 @@ public class ImageController {
 		return "home";
 	}*/
 
+	
 }
