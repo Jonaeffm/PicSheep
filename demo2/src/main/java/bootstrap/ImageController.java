@@ -312,8 +312,8 @@ public class ImageController {
 	 
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
 		
-		Album a = albumRepository.findById(path.getAlbumId());
-		cImage.setAlbum();
+		Album a = albumRepository.findById(path.getAlbumId()).get();
+		cImage.setAlbum(a);
 		cImage.setName(imageToAdd.getName());
 		
 		imageDbRepository.save(cImage);
