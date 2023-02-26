@@ -376,7 +376,7 @@ public class ImageController {
 
 	@RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
 	 
-	public String addAlbum2(@ModelAttribute("images") Album albumToAdd) {
+	public String addAlbum2(@ModelAttribute("album") Album albumToAdd) {
 		
 		
 		
