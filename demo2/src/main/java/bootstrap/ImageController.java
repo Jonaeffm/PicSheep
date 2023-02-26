@@ -393,7 +393,14 @@ public class ImageController {
 
 	@GetMapping("/delete/{id}")
 	public String deleteIncome(@PathVariable("id") long id, Model model) {
-albumRepository.deleteById(id);
+		
+		List<Image> iList=imageService.findByAlbum(albumRepository.getById(id));
+
+		for (Image i : iList) {
+		    // fruit is an element of the `fruits` array.
+			imageService.deleteById(i.getId());
+		}
+		albumRepository.deleteById(id);
 	
 		return "hw";
 	}
