@@ -391,4 +391,11 @@ public class ImageController {
 		return "home";
 	}
 
+	@GetMapping("/delete/{id}")
+	public String deleteIncome(@PathVariable("id") long id, Model model) {
+albumRepository.deleteById(id);
+	
+		return "hw";
+	}
+	
 }

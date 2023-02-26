@@ -17,6 +17,7 @@
                  <td th:text = "${album.id}"></td>
                  <td th:text = "${album.name}"></td>
                  <td><a th:href="@{/showAlbum/{id}(id=${album.id})}">Open</a></td>
+             <td><a th:href="@{/delete/{id}(id=${album.id})}">Delete</a></td>
             </tr>
             </table>
     </body>
