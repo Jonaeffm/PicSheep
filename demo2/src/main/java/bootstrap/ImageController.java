@@ -362,5 +362,33 @@ public class ImageController {
 		return "home";
 	}*/
 
+	@RequestMapping(value = "/addAlbum", method = RequestMethod.GET)
+	public String addAlbum(Model model) {
+		
+		
+		Album a=new Album();
+		
+		model.addAttribute("album",a );
+		
+		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+		return "addAlbum";
+	}
+
+	@RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
+	 
+	public String addAlbum2(@ModelAttribute("images") Album albumToAdd) {
+		
+		
+		
+		albumRepository.save(albumToAdd);
+		
+		
+		
+		
+		
 	
+	
+		return "home";
+	}
+
 }
