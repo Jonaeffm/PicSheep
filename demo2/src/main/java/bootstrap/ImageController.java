@@ -421,7 +421,7 @@ public class ImageController {
 			}
 			a.setImages(temp);
 		}
-		imageService.deleteById(id);
+		imageDbRepository.deleteById(id);
 	
 		return "hw";
 	}
