@@ -405,4 +405,12 @@ public class ImageController {
 		return "hw";
 	}
 	
+	@GetMapping("/deleteIm/{id}")
+	public String deleteImage(@PathVariable("id") long id, Model model) {
+		
+		
+		imageService.deleteById(id);
+	
+		return "hw";
+	}
 }
