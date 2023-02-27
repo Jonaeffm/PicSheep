@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -408,7 +408,19 @@ public class ImageController {
 	@GetMapping("/deleteIm/{id}")
 	public String deleteImage(@PathVariable("id") long id, Model model) {
 		
-		
+		List<Album> aList=albumRepository.findAll();
+		for (Album a:aList)
+		{
+			Collection<Image> temp = new ArrayList<Image>();
+			for (Image i : a.getImages())
+			{
+				if (i.getId()!=id)
+				{
+						temp.add(i);
+				}
+			}
+			a.setImages(temp);
+		}
 		imageService.deleteById(id);
 	
 		return "hw";
