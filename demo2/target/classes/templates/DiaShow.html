@@ -22,7 +22,7 @@ function showNextImage()
 		document.getElementById('container').innerHTML =
     		
     	
-    		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'
+    		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />';
     		
     	
     	
@@ -44,7 +44,9 @@ function showNextImage()
 		
 		const iterator1 = map.values();
 	
-		lastkey = iterator1.next().value
+		lastKey=getByValue(map,iterator1.next().value)
+		
+		document.getElementById('container').innerHTML ='success';
 	}
 </script>
 <meta charset="UTF-8">
