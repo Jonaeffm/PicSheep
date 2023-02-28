@@ -23,14 +23,15 @@ function showNextImage()
 		while((beforeLast=iterator1.next().value)!= map.get(lastKey))
 			{}
 		
-		document.getElementById('container').innerHTML = lastKey+'not map.get';
+		
 		lastKey=getByValue(map,iterator1.next().value);
+		document.getElementById('container').innerHTML = lastKey+'not map.get';
 		
 		
 	}
 	
 </script>
-<meta charset="UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
