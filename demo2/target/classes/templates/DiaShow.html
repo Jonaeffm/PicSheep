@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function showNextImage()
+	{
+	bool=0;
+		var beforeLast = 0;
+		const map = new Map(Object.entries(/*[[${images}]]*/));
+		
+		const iterator1 = map.values();
+	
+		while((beforeLast=iterator1.next().value)!= map.get(lastKey))
+			{}
+		
+		lastKey=getByValue(map,iterator1.next().value)
+		
+		if(map.get(lastKey)){
+		
+		document.getElementById('container').innerHTML =
+    		
+    	
+    		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'
+    		
+    	
+    	
+    		
+		var button = document.createElement('button');
+  button.innerHTML = 'next';
+  button.style = "right:5%; position: absolute;"
+  button.onclick = function(){
+    showNextImage();return false;
+  };
+
+	document.getElementById('container').appendChild(button);
+	  
+		}else{lastKey=getByValue(map,beforeLast);}
+	}
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
-
+<div id="container">
+	<a th:data-images="${image.value}" th:data-key="${image.key}" th:data-text="${imageclass.name}" th:onclick="showNextImage(this.getAttribute('data-key'),this.getAttribute('data-text'),this.getAttribute('data-images'))"></a>
 </div>
 </body>
 </html>
