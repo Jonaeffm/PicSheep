@@ -172,3 +172,36 @@ var ia;
 
 
 </html>
+
+
+lastKey+'</br>'+
+    		'<img src="data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'" alt="test"  id="bigImg" class="bigImgClass" />'+
+    		'<button th:onclick="showNextImage()">next</button>';
+    		
+    		
+    		
+    		
+    		function setLastKey()
+	{
+		
+		const map2 = new Map(Object.entries(/*[[${images}]]*/));	
+		const iterator2 = map2.values();
+	
+		lastKey=getByValue(map2,iterator2.next().value);
+		
+		document.getElementById('container').innerHTML ='success'+lastKey+'</br>'+
+		
+	'<button th:onclick="showNextImage()">next</button>';
+	}
+	
+	
+	
+	if(map.get(lastKey))
+		{
+			document.getElementById('container').innerHTML ='<img src="data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'" alt="test"  id="bigImg" class="bigImgClass" />'+
+    		'<button th:onclick="showNextImage()">next</button>';
+    	}else
+    	{
+    		lastKey=getByValue(map,beforeLast);
+    		document.getElementById('container').innerHTML = lastKey+'not map.get';
+    	}
