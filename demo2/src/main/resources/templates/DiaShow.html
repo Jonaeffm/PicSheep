@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
+<style>
+.bigImgClass{
+ 					max-height: 100vh;
+ 					 max-width: 100wh;}
+</style>
  <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script layout:fragment="script" th:inline="javascript">
@@ -64,7 +69,7 @@ async function showNextImage()
 </head>
 <body>
 <div id="container">
-	<button th:onclick="setLastKey()">set</button>
+	<button th:onclick="setLastKey()">start</button>
 	<button th:onclick="showNextImage()">next</button>
 </div>
 </body>
