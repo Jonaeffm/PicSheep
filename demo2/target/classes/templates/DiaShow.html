@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script layout:fragment="script" th:inline="javascript">
-var lastKey=1;
+var lastKey=2;
 	
 function getByValue(map, searchValue) {
 		  for (let [key, value] of map.entries()) {
@@ -24,7 +24,7 @@ function showNextImage()
 			{}
 		
 		
-		lastKey=getByValue(map,iterator1.next().value);
+		lastKey=getByValue(map,map.get(lastKey));
 		document.getElementById('container').innerHTML = lastKey+'not map.get';
 		
 		
