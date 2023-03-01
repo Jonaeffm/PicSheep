@@ -24,17 +24,18 @@ function showNextImage()
 			{}
 		
 		
-		lastKey=beforeLast;
+		
 		document.getElementById('container').innerHTML = lastKey+'not map.get';
 		
 		if(map.get(lastKey))
 		{
 			document.getElementById('container').innerHTML ='<img src="data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'" alt="test"  id="bigImg" class="bigImgClass" />'+
-    		'<button th:onclick="showNextImage()">next</button>';
+    		'<button onclick="showNextImage()">next</button>';
     		lastKey=iterator1.next().value;
+    		document.getElementById('container').innerHTML += lastKey
     	}else
     	{
-    		lastKey=beforeLast;
+    		
     		document.getElementById('container').innerHTML = lastKey+'not map.get';
     	}
 	}
