@@ -485,8 +485,8 @@ public class ImageController {
 
 	
 	@PostMapping("/files/upload")
-	  public ResponseEntity<ResponseMessage> uploadFiles(@RequestParam("files") MultipartFile[] files) {
-	    String message = "";
+	  public String uploadFiles(@RequestParam("files") MultipartFile[] files) {
+	    /*String message = "";
 	    try {
 	      List<String> fileNames = new ArrayList<>();
 
@@ -500,6 +500,20 @@ public class ImageController {
 	    } catch (Exception e) {
 	      message = "Fail to upload files!";
 	      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
-	    }
+	    }*/
+	
+		for (MultipartFile f : files)
+		{
+		Image dbImage = new Image();
+		dbImage.setName(f.getName());
+		try {
+			dbImage.setContent(f.getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		imageDbRepository.save(dbImage);
+		}
+		return "hw";
 	  }
 }
