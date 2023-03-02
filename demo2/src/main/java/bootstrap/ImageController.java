@@ -62,11 +62,11 @@ import domain.Album;
 
 import domain.Image;
 import domain.ImagePath;
-import domain.ResponseMessage;
+
 import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
-import sevices.FilesStorageService;
+
 import sevices.IImageService;
 import sevices.ImageService;
 
@@ -82,8 +82,7 @@ public class ImageController {
 	@Autowired
 	private IImageService imageService;//contains functions for entity Image
 	
-	@Autowired
-	private FilesStorageService storageService;
+
 	
 	Image cImage;
     // Create ObjectMapper object.
