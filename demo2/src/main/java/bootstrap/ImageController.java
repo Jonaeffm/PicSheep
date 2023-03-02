@@ -82,6 +82,9 @@ public class ImageController {
 	@Autowired
 	private IImageService imageService;//contains functions for entity Image
 	
+	@Autowired
+	private FilesStorageService storageService;
+	
 	Image cImage;
     // Create ObjectMapper object.
     String listToJson(List parameter) throws JsonProcessingException
@@ -474,11 +477,11 @@ public class ImageController {
 	    return "DiaShow";
 	}
 	
-	 @Autowired
-	  FilesStorageService storageService;
+	 
+	 
 
 	
-	@PostMapping("/upload")
+	@PostMapping("/uploadMore")
 	  public ResponseEntity<ResponseMessage> uploadFiles(@RequestParam("files") MultipartFile[] files) {
 	    String message = "";
 	    try {
