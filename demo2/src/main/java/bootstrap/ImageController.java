@@ -477,11 +477,14 @@ public class ImageController {
 	    return "DiaShow";
 	}
 	
-	 
+	 @GetMapping("/files/new")
+	  public String newFile(Model model) {
+	    return "upload_form";
+	  }
 	 
 
 	
-	@PostMapping("/uploadMore")
+	@PostMapping("/files/upload")
 	  public ResponseEntity<ResponseMessage> uploadFiles(@RequestParam("files") MultipartFile[] files) {
 	    String message = "";
 	    try {
