@@ -508,7 +508,7 @@ public class ImageController {
 		cImageList.get(cImageInt).setAlbum(a);
 		cImageList.get(cImageInt).setName(imageToAdd.getName());
 		
-		imageDbRepository.save(cImage);
+		imageDbRepository.save(cImageList.get(cImageInt));
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
 		System.out.println("Album: "+path.getAlbumId());
