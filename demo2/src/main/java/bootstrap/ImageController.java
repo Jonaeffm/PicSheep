@@ -476,6 +476,44 @@ public class ImageController {
 	    return "DiaShow";
 	}
 	
+	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
+	public String iF(Model model) {
+		
+		Image b = new Image();
+		Album a=new Album();
+		b.setAlbum(a);
+		a.getImages().add(b);
+		model.addAttribute("images",b );
+		ImagePath ip = new ImagePath();
+		model.addAttribute("imagePath",ip );
+		List AlbumList = new ArrayList();
+		AlbumList=albumRepository.findAll();
+		model.addAttribute("albums",AlbumList);
+		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+		return "insert2";
+	}
+
+	@RequestMapping(value = "/insertFolder", method = RequestMethod.POST)
+	 
+	public String iF(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
+		
+		Album a = albumRepository.findById(path.getAlbumId()).get();
+		cImage.setAlbum(a);
+		cImage.setName(imageToAdd.getName());
+		
+		imageDbRepository.save(cImage);
+		System.out.print("test "+path.getPath());
+		System.out.println("Name: "+imageToAdd.getName());
+		System.out.println("Album: "+path.getAlbumId());
+		
+		
+		
+		
+	
+	
+		return "home";
+	}
+	
 	 @GetMapping("/files/new")
 	  public String newFile(Model model) {
 	    return "upload_form";
@@ -514,6 +552,7 @@ public class ImageController {
 		//imageDbRepository.save(dbImage);
 		cImageList.add(dbImage);
 		}
-		return "hw";
+		String returnStr = "redirect:/insertFolder";
+				return returnStr;
 	  }
 }
