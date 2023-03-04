@@ -490,7 +490,7 @@ public class ImageController {
 		AlbumList=albumRepository.findAll();
 		model.addAttribute("albums",AlbumList);
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
-		return "insert2";
+		return "iF";
 	}
 
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.POST)
