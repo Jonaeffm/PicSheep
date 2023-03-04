@@ -85,6 +85,7 @@ public class ImageController {
 
 	List<Image> cImageList;
 	Image cImage;
+	int cImageInt;
     // Create ObjectMapper object.
     String listToJson(List parameter) throws JsonProcessingException
     {
@@ -479,7 +480,7 @@ public class ImageController {
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
 	public String iF(Model model) {
 		
-		Image image = cImageList.get(1);
+		Image image = cImageList.get(cImageInt);
 		HashMap<Long,String> productBase64Images=new HashMap<Long,String>();
 		  String contHeader = Base64.encodeBase64String(image.getContent());//code
       	productBase64Images.put(image.getId(), contHeader);//save
@@ -504,14 +505,19 @@ public class ImageController {
 	public String iF(@ModelAttribute("images") Image imageToAdd,@ModelAttribute("imagePath") ImagePath path) {
 		
 		Album a = albumRepository.findById(path.getAlbumId()).get();
-		cImage.setAlbum(a);
-		cImage.setName(imageToAdd.getName());
+		cImageList.get(cImageInt).setAlbum(a);
+		cImageList.get(cImageInt).setName(imageToAdd.getName());
 		
 		imageDbRepository.save(cImage);
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
 		System.out.println("Album: "+path.getAlbumId());
-		
+		 if(cImageList.size()<cImageInt-1)
+		 {
+			 cImageInt+=1;
+			 String returnStr = "redirect:/insertFolder";
+				return returnStr;
+		 }
 		
 		
 		
@@ -558,6 +564,7 @@ public class ImageController {
 		//imageDbRepository.save(dbImage);
 		cImageList.add(dbImage);
 		}
+		cImageInt = 0;
 		String returnStr = "redirect:/insertFolder";
 				return returnStr;
 	  }
