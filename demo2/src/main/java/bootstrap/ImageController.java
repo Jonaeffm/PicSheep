@@ -515,7 +515,7 @@ public class ImageController {
 		 if(cImageList.size()<cImageInt-1)
 		 {
 			 cImageInt+=1;
-			 String returnStr = "redirect:/insertFolder";
+			 String returnStr = "redirect:/rdrct";
 				return returnStr;
 		 }
 		
@@ -568,4 +568,10 @@ public class ImageController {
 		String returnStr = "redirect:/insertFolder";
 				return returnStr;
 	  }
+	
+	@GetMapping("/rdrcrt")
+	public String rdrct(Model model,HttpServletResponse response) throws IOException {
+		
+	    return "redirect:/insertFolder";
+	}
 }
