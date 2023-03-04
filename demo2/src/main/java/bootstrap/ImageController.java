@@ -83,7 +83,7 @@ public class ImageController {
 	private IImageService imageService;//contains functions for entity Image
 	
 
-	
+	List<Image> cImageList;
 	Image cImage;
     // Create ObjectMapper object.
     String listToJson(List parameter) throws JsonProcessingException
@@ -500,7 +500,7 @@ public class ImageController {
 	      message = "Fail to upload files!";
 	      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
 	    }*/
-	
+		cImageList = new ArrayList<Image>();
 		for (MultipartFile f : files)
 		{
 		Image dbImage = new Image();
@@ -511,7 +511,8 @@ public class ImageController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		imageDbRepository.save(dbImage);
+		//imageDbRepository.save(dbImage);
+		cImageList.add(dbImage);
 		}
 		return "hw";
 	  }
