@@ -512,7 +512,7 @@ public class ImageController {
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
 		System.out.println("Album: "+path.getAlbumId());
-		 if(cImageList.size()<cImageInt-1)
+		 if(cImageList.size()>cImageInt-1)
 		 {
 			 cImageInt+=1;
 			 String returnStr = "redirect:/rdrct";
@@ -569,7 +569,7 @@ public class ImageController {
 				return returnStr;
 	  }
 	
-	@GetMapping("/rdrcrt")
+	@GetMapping("/rdrct")
 	public String rdrct(Model model,HttpServletResponse response) throws IOException {
 		
 	    return "redirect:/insertFolder";
