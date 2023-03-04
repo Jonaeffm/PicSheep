@@ -479,6 +479,12 @@ public class ImageController {
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
 	public String iF(Model model) {
 		
+		Image image = cImageList.get(1);
+		HashMap<Long,String> productBase64Images=new HashMap<Long,String>();
+		  String contHeader = Base64.encodeBase64String(image.getContent());//code
+      	productBase64Images.put(image.getId(), contHeader);//save
+		model.addAttribute("image",productBase64Images.get(image.getId()));
+		
 		Image b = new Image();
 		Album a=new Album();
 		b.setAlbum(a);
