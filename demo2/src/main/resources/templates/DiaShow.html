@@ -40,10 +40,10 @@ async function showNextImage()
 		
 		if(map.get(lastKey))
 		{
-			document.getElementById('container').innerHTML ='<img src="data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'" alt="test"  id="bigImg" class="bigImgClass" />'+
-    		'<button onclick="showNextImage()">next</button>';
+			document.getElementById('container').innerHTML ='<img src="data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'" alt="test"  id="bigImg" class="bigImgClass" />'
+    		;
     		lastKey=iterator1.next().value;
-    		document.getElementById('container').innerHTML += lastKey
+    		
     	}else
     	{
     		
