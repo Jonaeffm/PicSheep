@@ -159,13 +159,9 @@ public class ImageController {
 	    return new ByteArrayResource(image);
 	}
 	//upload TEST DATA
-	@GetMapping(value = "/")
-	public String hw() throws IOException{
-		testUpload();
-		return "hw";
-	}
+
 	//shows albums
-	@GetMapping(value = "/albums" )
+	@GetMapping(value = "/" )
 	public String showAlbums(Model model)
 	{
 		model.addAttribute("albums", albumRepository.findAll());
