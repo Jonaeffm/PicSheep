@@ -509,7 +509,7 @@ public class ImageController {
 		System.out.print("test "+path.getPath());
 		System.out.println("Name: "+imageToAdd.getName());
 		System.out.println("Album: "+path.getAlbumId());
-		 if(cImageList.size()>cImageInt-1)
+		 if(cImageList.size()>cImageInt)
 		 {
 			 cImageInt+=1;
 			 String returnStr = "redirect:/rdrct";
@@ -520,7 +520,8 @@ public class ImageController {
 		
 	
 	
-		return "home";
+		 String returnStr = "redirect:/";
+			return returnStr;
 	}
 	
 	 @GetMapping("/files/new")
