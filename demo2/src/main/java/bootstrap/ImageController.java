@@ -329,7 +329,8 @@ public class ImageController {
 		
 	
 	
-		return "home";
+		String returnStr = "redirect:/";
+		return returnStr;
 	}
 	@RequestMapping(value = "/addImage", method = RequestMethod.GET)
 	public String showStudentInfo(Model model) {
