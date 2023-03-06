@@ -390,7 +390,8 @@ public class ImageController {
 		
 	
 	
-		return "home";
+		String returnStr = "redirect:/";
+		return returnStr;
 	}
 
 	@GetMapping("/delete/{id}")
