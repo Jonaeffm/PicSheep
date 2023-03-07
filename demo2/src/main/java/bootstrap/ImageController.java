@@ -291,12 +291,12 @@ public class ImageController {
 			imageService.deleteById(i.getId());
 		}
 		albumRepository.deleteById(id);
-		return "hw";
+		String returnStr = "redirect:/";
+		return returnStr;
 	}
 	
 	@GetMapping("/deleteIm/{id}")
 	public String deleteImage(@PathVariable("id") long id, Model model) {
-		
 		List<Album> aList=albumRepository.findAll();
 		for (Album a:aList)
 		{
@@ -311,8 +311,8 @@ public class ImageController {
 			a.setImages(temp);
 		}
 		imageDbRepository.deleteById(id);
-	
-		return "hw";
+		String returnStr = "redirect:/";
+		return returnStr;
 	}
 	@GetMapping("/dia")
 	public String getDia(Model model,HttpServletResponse response) throws IOException {
