@@ -84,6 +84,11 @@ public class ImageController {
 	
 	 public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
 	
+	 @GetMapping(value = "/signUp/" )
+		public String signUp(Model model) {
+		 return "signUp";
+	 }
+	 
 	 @PostMapping("/upload") 
 	 		public String uploadImage(Model model, @RequestParam("image") MultipartFile file) throws Exception {
 	        /*StringBuilder fileNames = new StringBuilder();
