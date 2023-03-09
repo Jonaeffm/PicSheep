@@ -19,7 +19,7 @@ public class SecurityConfig {
 		   
 		   
          .authorizeRequests()
-         	.antMatchers("/addUser").permitAll()
+         	
              .anyRequest().authenticated()
              .and()
              

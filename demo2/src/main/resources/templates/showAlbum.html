@@ -6,7 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
     <body>
-    
+    <div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
+				<form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
+                            <input type="submit" class="btn btn-primary" value="Logout" />
+                        </form>
      <a href="/addImage">add one image</a>
      <a href="/files/new">add more then one image</a>
  	 <a href="/images">all images</a>
