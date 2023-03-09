@@ -20,6 +20,9 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,16 +44,20 @@ import domain.Album;
 
 import domain.Image;
 import domain.ImagePath;
-
+import domain.ProgramUser;
 import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
-
+import repositories.ProgramUserRepository;
 import sevices.IImageService;
 
 @Controller
 public class ImageController {
 
+	@Autowired
+	private ProgramUserRepository userRepository;
+
+	
 	@Autowired
 	ImageDbRepository imageDbRepository; 
 	
@@ -84,10 +91,46 @@ public class ImageController {
 	
 	 public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
 	
-	 @GetMapping(value = "/signUp/" )
-		public String signUp(Model model) {
-		 return "signUp";
-	 }
+	 @GetMapping("/login")
+	    public String showLoginForm(Model model) {
+	         
+	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+	            return "login";
+	        }
+	 
+	        return "redirect:/";
+	        }
+	 
+	 @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+		public String showUserInfo(Model model) {
+			
+			ProgramUser b = new ProgramUser();
+			
+			model.addAttribute("users",b );
+			
+			// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+			return "newUser";
+		}
+
+		@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+		 
+		public String processUserInfo(@ModelAttribute("users") ProgramUser userToAdd) {
+			
+			
+				
+			
+			
+			userRepository.save(userToAdd);
+				
+				//BudgetService.addBudget(budgetToAdd);
+				
+		
+			return "success";
+		}
+
+
+	
 	 
 	 @PostMapping("/upload") 
 	 		public String uploadImage(Model model, @RequestParam("image") MultipartFile file) throws Exception {
