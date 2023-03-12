@@ -148,9 +148,11 @@ public class ImageController {
 				
 					
 				
-				
+				ProgramUser p = userRepository.findByUsername(userToAdd.getUsername());
+				if (userToAdd.getPassword().equals(p.getPassword()))
+				{
 				userRepository.delete(userRepository.findByUsername(userToAdd.getUsername()));
-					
+				}
 					//BudgetService.addBudget(budgetToAdd);
 					
 			
