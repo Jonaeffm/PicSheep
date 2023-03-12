@@ -126,7 +126,8 @@ public class ImageController {
 				//BudgetService.addBudget(budgetToAdd);
 				
 		
-			return "success";
+			String returnStr = "redirect:/";
+			return returnStr;
 		}
 
 

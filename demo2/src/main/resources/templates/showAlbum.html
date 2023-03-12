@@ -42,6 +42,7 @@ a:active {
     <div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
 				<form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
                             <input type="submit" class="btn btn-primary" value="Logout" />
+                            <a href="/addUser">add user</a>
                         </form>
      <a href="/addImage">add one image</a>
      <a href="/files/new">add more then one image</a>
