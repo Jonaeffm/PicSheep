@@ -26,7 +26,7 @@ public class SecurityConfig {
 		   
 		   
           .authorizeRequests()
-          	.requestMatchers("/addUser").permitAll()
+          	.requestMatchers("/deleteUser").permitAll()
               .anyRequest().authenticated()
               .and()
               
