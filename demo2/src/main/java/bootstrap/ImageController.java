@@ -228,25 +228,7 @@ public class ImageController {
 	            String contHeader = Base64.encodeBase64String(image.getContent());//code
 	        	productBase64Images.put(image.getId(), contHeader);//save
 	    }
-	    try {//create JSON string (not used until now)
-	       String str = listToJson(images);
-	       BufferedWriter writer = new BufferedWriter(new FileWriter("ImageClass.json"));
-	       writer.write(str);
-	       writer.close();
-	        System.out.println("Successfully wrote to the file.");
-	      } catch (IOException e) {
-	        System.out.println("An error occurred.");
-	        BufferedWriter writer = new BufferedWriter(new FileWriter("error.txt"));
-	        StringWriter sw = new StringWriter();
-	        PrintWriter pw = new PrintWriter(sw);
-	        e.printStackTrace(pw);
-	        writer.write(sw.toString()); 
-		       writer.close();
-	      }
-	    String str2 = new ObjectMapper().writeValueAsString(productBase64Images);
-	    BufferedWriter writer = new BufferedWriter(new FileWriter("Base64Map.json"));
-	       writer.write(str2);
-	       writer.close();
+	  
 	    model.addAttribute("imageclasses",images);//Thymeleaf models
 	    model.addAttribute("images", productBase64Images);
 	    return "home";
@@ -278,6 +260,7 @@ public class ImageController {
 	    	String contHeader = Base64.encodeBase64String(image.getContent());
 	        productBase64Images.put(image.getId(), contHeader);
 	    }
+	    
 	    model.addAttribute("imageclasses",images);
 	    model.addAttribute("images", productBase64Images);
 	    return "home";
