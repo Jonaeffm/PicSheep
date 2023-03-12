@@ -130,6 +130,33 @@ public class ImageController {
 			return returnStr;
 		}
 
+		 @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+			public String showUserInfo2(Model model) {
+				
+				ProgramUser b = new ProgramUser();
+				
+				model.addAttribute("users",b );
+				
+				// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
+				return "deleteUser";
+			}
+
+			@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+			 
+			public String processUserInfo2(@ModelAttribute("users") ProgramUser userToAdd) {
+				
+				
+					
+				
+				
+				userRepository.delete(userRepository.findByUsername(userToAdd.getUsername()));
+					
+					//BudgetService.addBudget(budgetToAdd);
+					
+			
+				String returnStr = "redirect:/";
+				return returnStr;
+			}
 
 	
 	 
