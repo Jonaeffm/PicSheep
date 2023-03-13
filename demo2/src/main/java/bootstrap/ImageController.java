@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import java.util.Map;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -374,6 +375,21 @@ public class ImageController {
 			imageService.deleteById(i.getId());
 		}
 		albumRepository.deleteById(id);
+		String returnStr = "redirect:/";
+		return returnStr;
+	}
+	
+	@GetMapping("/download/{id}")
+	public String deleteIncome2(@PathVariable("id") long id, Model model) {
+		Optional<Image> itd=imageDbRepository.findById(id);
+		try {
+			batp(itd.get().getContent());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
