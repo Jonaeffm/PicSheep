@@ -225,3 +225,10 @@ lastKey+'</br>'+
 	    BufferedWriter writer = new BufferedWriter(new FileWriter("Base64Map.json"));
 	       writer.write(str2);
 	       writer.close();
+	       
+	       
+	       var blob = new Blob([resultByte], {type: "application/pdf"});
+var link = document.createElement("a");
+link.href = window.URL.createObjectURL(blob);
+link.download = "myFileName.pdf";
+link.click();
