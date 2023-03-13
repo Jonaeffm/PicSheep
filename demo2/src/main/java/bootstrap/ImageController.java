@@ -1,6 +1,9 @@
 package bootstrap;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -73,6 +79,15 @@ public class ImageController {
 	//number of the current image in array
 	int cImageInt;
     // Create ObjectMapper object.
+	
+	   public static void batp(byte[] data) throws Exception {
+		     
+		      ByteArrayInputStream bis = new ByteArrayInputStream(data);
+		      BufferedImage bImage2 = ImageIO.read(bis);
+		      ImageIO.write(bImage2, "jpg", new File("output.jpg") );
+		      System.out.println("image created");
+		   }
+	
     String listToJson(List parameter) throws JsonProcessingException
     {
     	ObjectMapper mapper = new ObjectMapper();
@@ -229,6 +244,12 @@ public class ImageController {
 		a.getImages().add(i3);
 		i3.setAlbum(a);
 		albumRepository.save(a);
+		try {
+			batp(i3.getContent());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//downloadImage(testID);
 		//String returnStr = "redirect:/image/"+testID;
 		//return returnStr;
@@ -236,7 +257,8 @@ public class ImageController {
 			      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
 			      .getContent();*/
 //_________________________TESTDATA____________________________________________
-			    return "hW";
+		String returnStr = "redirect:/";
+		return returnStr;
 	}
 
 	private String imageBase64;
