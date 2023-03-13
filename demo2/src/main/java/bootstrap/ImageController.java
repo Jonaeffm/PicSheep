@@ -281,9 +281,11 @@ public class ImageController {
 	            String contHeader = Base64.encodeBase64String(image.getContent());//code
 	        	productBase64Images.put(image.getId(), contHeader);//save
 	    }
-	  
+	    String imagesString =listToJson(images);
+	    model.addAttribute("imagesString", imagesString);
 	    model.addAttribute("imageclasses",images);//Thymeleaf models
 	    model.addAttribute("images", productBase64Images);
+
 	    return "home";
 	}
 	//site for try and test
@@ -313,7 +315,8 @@ public class ImageController {
 	    	String contHeader = Base64.encodeBase64String(image.getContent());
 	        productBase64Images.put(image.getId(), contHeader);
 	    }
-	    
+	    String imagesString =listToJson(images);
+	    model.addAttribute("imagesString", imagesString);
 	    model.addAttribute("imageclasses",images);
 	    model.addAttribute("images", productBase64Images);
 	    return "home";
