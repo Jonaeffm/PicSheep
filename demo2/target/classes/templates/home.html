@@ -200,8 +200,10 @@ a:active {
 	  var button3 = document.createElement('button');
 		  button3.innerHTML = 'download';
 		  button3.onclick = function(){
-			  var sampleArr = base64ToArrayBuffer(value);
+			 var byteArr = _base64ToArray(value);
+			 saveByteArray("download", byteArr);
 			  button3.innerHTML='gedrueckt';
+				return 0;	 
 			  };
 			 
         		  document.getElementById('dialog').appendChild(button2);
