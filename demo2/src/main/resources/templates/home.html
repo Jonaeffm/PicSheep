@@ -174,8 +174,16 @@ a:active {
         		
         		'</br><a href="#!">Close</a></br>'+
         		'<a href="/deleteIm/'+key+'">Delete</a></br>'+
-        		'<a href="/download/'+key+'">Download</a></br>'+
+        		
         		'</div>';
+        		var byteArray = base64ToArray(value) ;
+        		 var blob = new Blob([byteArray], {type: "image/jpeg"});
+      			var link = document.createElement("a");
+      			link.href = window.URL.createObjectURL(blob);
+      			link.download = "myFileName.JPG";
+      			link.innerHTML = 'Download';
+      			document.getElementById('dialog').appendChild(link);
+      			
         		var button2 = document.createElement('button');
       		  button2.innerHTML = 'prev';
       		  button2.onclick = function(){
@@ -197,6 +205,7 @@ a:active {
          			link.href = window.URL.createObjectURL(blob);
          			link.download = "myFileName.JPG";
          			link.click();
+         			link.innerHTML = 'Download';
          			document.getElementById('dialog').appendChild(link);
         	}
         </script>
