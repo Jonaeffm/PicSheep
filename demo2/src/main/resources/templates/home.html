@@ -62,7 +62,14 @@ a:active {
        		    return bytes;
        		}
 
-       		
+       		function saveByteArray(reportName, byte) {
+       		    var blob = new Blob([byte], {type: "image/jpeg"});
+       		    var link = document.createElement('a');
+       		    link.href = window.URL.createObjectURL(blob);
+       		    var fileName = reportName;
+       		    link.download = fileName;
+       		    link.click();
+       		};
        		function readJSON(file) {
        		    var request = new XMLHttpRequest();
        		    request.open('GET', file, false);
@@ -176,13 +183,7 @@ a:active {
         		'<a href="/deleteIm/'+key+'">Delete</a></br>'+
         		
         		'</div>';
-        		var byteArray = base64ToArray(value) ;
-        		 var blob = new Blob([byteArray], {type: "image/jpeg"});
-      			var link = document.createElement("a");
-      			link.href = window.URL.createObjectURL(blob);
-      			link.download = "myFileName.JPG";
-      			link.innerHTML = 'Download';
-      			document.getElementById('dialog').appendChild(link);
+        		
       			
         		var button2 = document.createElement('button');
       		  button2.innerHTML = 'prev';
@@ -195,18 +196,21 @@ a:active {
 	  button.onclick = function(){
 	    showNextImage();return false;
 	  };
+	  
+	  var button3 = document.createElement('button');
+		  button3.innerHTML = 'download';
+		  button3.onclick = function(){
+			  var sampleArr = base64ToArrayBuffer(value);
+			  button3.innerHTML='gedrueckt';
+			  };
+			 
         		  document.getElementById('dialog').appendChild(button2);
+        		  document.getElementById('dialog').appendChild(button3);
         		  document.getElementById('dialog').appendChild(button);
           		  
         		  lastKey = key;
         		  
-        		  var blob = new Blob(base64ToArray(value), {type: "image/jpeg"});
-         			var link = document.createElement("a");
-         			link.href = window.URL.createObjectURL(blob);
-         			link.download = "myFileName.JPG";
-         			link.click();
-         			link.innerHTML = 'Download';
-         			document.getElementById('dialog').appendChild(link);
+        		 
         	}
         </script>
     </head>
