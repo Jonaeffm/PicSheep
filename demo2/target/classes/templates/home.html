@@ -123,8 +123,16 @@ a:active {
       		  				button.onclick = function(){
       		    			showNextImage();return false;
       		  };
-      		  
+      		 var button3 = document.createElement('button');
+   		  button3.innerHTML = 'download';
+   		  button3.onclick = function(){
+   			 var byteArr = _base64ToArray(map.get(lastKey));
+   			 saveByteArray("download", byteArr);
+   			  button3.innerHTML='gedrueckt';
+   				return 0;	 
+   			  };
       		  	document.getElementById('dialog').appendChild(button2);
+      			document.getElementById('dialog').appendChild(button3);
       			document.getElementById('dialog').appendChild(button);
       		  
        			}
@@ -164,7 +172,16 @@ a:active {
     		  button.onclick = function(){
     		    showNextImage();return false;
     		  };
+    		  var button3 = document.createElement('button');
+    		  button3.innerHTML = 'download';
+    		  button3.onclick = function(){
+    			 var byteArr = _base64ToArray(map.get(lastKey));
+    			 saveByteArray("download", byteArr);
+    			  button3.innerHTML='gedrueckt';
+    				return 0;	 
+    			  };
     		  document.getElementById('dialog').appendChild(button2);
+    		  document.getElementById('dialog').appendChild(button3);
         		document.getElementById('dialog').appendChild(button);
       		  
        			}else{lastKey=getByValue(map,beforeLast);}
