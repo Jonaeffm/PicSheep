@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@JsonRootName(value = "image")
+
 @JsonPropertyOrder({  "id","name","album" })
 public class Image {
 @JsonProperty("id")
