@@ -184,7 +184,7 @@ a:active {
 	            		  button2.onclick = function(){
 	            		    showPrevImage();return false;};
      			var button = document.createElement('button');
-     			var temp =  searchById({id: lastKey}, inc)
+     			var temp =  searchById(lastKey, inc)
     		  button.innerHTML = temp.name;
     		  button.style = "right:5%; position: absolute;"
     		  button.onclick = function(){
