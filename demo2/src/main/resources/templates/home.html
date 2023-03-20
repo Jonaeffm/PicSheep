@@ -85,6 +85,18 @@ a:active {
        		  }
        		}
        		
+       		function searchById(searchKey, obj) {
+       		   let key = Object.keys(searchKey)[0];
+       		   let res;
+       		   if (obj[key] === searchKey[key]) {
+       		      return obj;
+       		   };
+       		   obj.subList.some(function (a) {
+       		      res = searchById(searchKey, a);
+       		      return res;
+       		   });
+       		   return res;
+       		}
        		function showPrevImage()
        		{
 				bool=0;
@@ -152,7 +164,7 @@ a:active {
        			
        			lastKey=getByValue(map,iterator1.next().value)
        			
-       			var item =inc.find(item => item.id === lastKey);
+       			var item =inc.ArrayList.find(item => item.id === lastKey);
        			
        			if(map.get(lastKey)){
        			
@@ -172,7 +184,8 @@ a:active {
 	            		  button2.onclick = function(){
 	            		    showPrevImage();return false;};
      			var button = document.createElement('button');
-    		  button.innerHTML = item.name;
+     			var temp =  searchById({id: lastKey}, inc)
+    		  button.innerHTML = temp.name;
     		  button.style = "right:5%; position: absolute;"
     		  button.onclick = function(){
     		    showNextImage();return false;
