@@ -85,18 +85,7 @@ a:active {
        		  }
        		}
        		
-       		function searchById(searchKey, obj) {
-       		   let key = Object.keys(searchKey)[0];
-       		   let res;
-       		   if (obj[key] === searchKey[key]) {
-       		      return obj;
-       		   };
-       		   obj.subList.some(function (a) {
-       		      res = searchById(searchKey, a);
-       		      return res;
-       		   });
-       		   return res;
-       		}
+       		
        		function showPrevImage()
        		{
 				bool=0;
@@ -185,7 +174,7 @@ a:active {
 	            		    showPrevImage();return false;};
      			var button = document.createElement('button');
      			
-     			var temp = searchById({id: lastKey}, inc);
+     		
      			
     		  button.innerHTML = 'next';
     		  button.style = "right:5%; position: absolute;"
