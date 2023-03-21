@@ -164,7 +164,7 @@ a:active {
        			
        			lastKey=getByValue(map,iterator1.next().value)
        			
-       			var item =inc.ArrayList.find(item => item.id === lastKey);
+       			
        			
        			if(map.get(lastKey)){
        			
@@ -184,8 +184,8 @@ a:active {
 	            		  button2.onclick = function(){
 	            		    showPrevImage();return false;};
      			var button = document.createElement('button');
-     			var temp =  searchById(lastKey, inc)
-    		  button.innerHTML = temp;
+     			
+    		  button.innerHTML = 'next';
     		  button.style = "right:5%; position: absolute;"
     		  button.onclick = function(){
     		    showNextImage();return false;
