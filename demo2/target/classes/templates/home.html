@@ -141,7 +141,10 @@
 					const incStr = JSON.stringify(inc, null, 2);					
 					for (i=0;i<inc.length;i++)
 					{
-						
+						if(inc[i].id===lastKey)
+						{
+							 incObj=inc[i].name;
+						}
 					}
        				const iterator1 = map.values();
 				
@@ -173,7 +176,7 @@
      			
      			
      			
-    		  			button.innerHTML = incStr;
+    		  			button.innerHTML = incObj;
     		  			button.style = "right:5%; position: absolute;"
     		  			button.onclick = function(){
     		    			showNextImage();return false;
