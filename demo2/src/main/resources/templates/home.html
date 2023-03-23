@@ -4,160 +4,152 @@
     <!--CSS Data-->
     	<style>
     	a:link {
-  color: red;
-  background-color: transparent;
-  text-decoration: none;
-}
+  			color: red;
+  			background-color: transparent;
+  			text-decoration: none;
+		}
 
-a:visited {
-  color: red;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-a:active {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
+		a:visited {
+  			color: red;
+  			background-color: transparent;
+  			text-decoration: none;
+		}
+		a:hover {
+  			color: red;
+  			background-color: transparent;
+  			text-decoration: underline;
+		}
+		a:active {
+  			color: red;
+  			background-color: transparent;
+  			text-decoration: underline;
+		}
     	body {
-  background-image: url('background01.jpg');
-    background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-   			 img {
-  					border: 5px solid #ffffff;
-				}
-			.bigImgClass{
- 					max-height: 100vh;
- 					 max-width: 100wh;}
-			dialog { display: block; }
-			dialog:not(:target):not([open]) { display: none; }
-			
-			
+ 			background-image: url('background01.jpg');
+    		background-repeat: no-repeat;
+  			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}
+	 	img {
+			border: 5px solid #ffffff;
+		}
+		.bigImgClass{
+ 			max-height: 100vh;
+ 			max-width: 100wh;}
+		dialog { display: block; }
+		dialog:not(:target):not([open]) { display: none; }	
 	</style>
 	
-        <title>images</title><!--site title-->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       	<script layout:fragment="script" th:inline="javascript">
-       		
-       		var bool = 0;
-       		var lastKey=0;
-       		
-       		function _base64ToArray(base64) {
-       		    var binary_string = window.atob(base64);
-       		    var len = binary_string.length;
-       		    var bytes = new Uint8Array(len);
-       		    for (var i = 0; i < len; i++) {
-       		        bytes[i] = binary_string.charCodeAt(i);
-       		    }
-       		    return bytes;
+    <title>images</title><!--site title-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script layout:fragment="script" th:inline="javascript">		
+    	var bool = 0;
+       	var lastKey=0;	
+       	function _base64ToArray(base64) {
+       		var binary_string = window.atob(base64);
+       		var len = binary_string.length;
+       		var bytes = new Uint8Array(len);
+       		for (var i = 0; i < len; i++) {
+       			bytes[i] = binary_string.charCodeAt(i);
        		}
+       		return bytes;
+       	}
 
-       		function saveByteArray(reportName, byte) {
-       		    var blob = new Blob([byte], {type: "image/jpeg"});
-       		    var link = document.createElement('a');
-       		    link.href = window.URL.createObjectURL(blob);
-       		    var fileName = reportName;
-       		    link.download = fileName;
-       		    link.click();
-       		};
-       		function readJSON(file) {
-       		    var request = new XMLHttpRequest();
-       		    request.open('GET', file, false);
-       		    request.send(null);
-       		    if (request.status == 200)
-       		        return request.responseText;
-       		};
+       	function saveByteArray(reportName, byte) {
+       		var blob = new Blob([byte], {type: "image/jpeg"});
+       		var link = document.createElement('a');
+       		link.href = window.URL.createObjectURL(blob);
+       		var fileName = reportName;
+       		link.download = fileName;
+       		link.click();
+       	};
+       	function readJSON(file) {
+       		var request = new XMLHttpRequest();
+       		request.open('GET', file, false);
+       		request.send(null);
+       		if (request.status == 200)
+       		return request.responseText;
+       	};
 
-       		function getByValue(map, searchValue) {
-       		  for (let [key, value] of map.entries()) {
-       		    if (value === searchValue)
-       		      return key;
-       		  }
+       	function getByValue(map, searchValue) {
+       		for (let [key, value] of map.entries()) {
+       		if (value === searchValue)
+       		return key;
        		}
-       		
-       		
-       		function showPrevImage()
-       		{
-				bool=0;
-       			const map = new Map(Object.entries(/*[[${images}]]*/));
-       			const iterator1 = map.values();
-				var array = [];
-       			var i = 0;
-				while(array[i]=iterator1.next().value)
-       				{i++;}
+    	}
+       	function showPrevImage()
+       	{
+			bool=0;
+       		const map = new Map(Object.entries(/*[[${images}]]*/));
+       		const iterator1 = map.values();
+			var array = [];
+       		var i = 0;
+			while(array[i]=iterator1.next().value)
+       			{i++;}
 			
-					for(i=array.length;i>-1;i--)
-       				{
-       				if(array[i]==map.get(lastKey)){
-       					bool=1;
-       					i--;
-       					lastKey=getByValue(map,array[i]);
-       					break;}
-       				}
-					if(map.get(lastKey)){
+			for(i=array.length;i>-1;i--)
+       		{
+       			if(array[i]==map.get(lastKey)){
+       				bool=1;
+       				i--;
+       				lastKey=getByValue(map,array[i]);
+       				break;}
+       			}
+				if(map.get(lastKey)){
        			
-       			document.getElementById('dialog').innerHTML =
-	            		'<div class="dbox-dialog--content">'+
+       				document.getElementById('dialog').innerHTML =
+	            	'<div class="dbox-dialog--content">'+
 	            		
-	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
-	            		'</br><a href="#!">Close</a></br>'+
-	            		'<a href="/deleteIm/'+lastKey+'">Delete</a></br>'+
+	            	'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+	            	'</br><a href="#!">Close</a></br>'+
+	            	'<a href="/deleteIm/'+lastKey+'">Delete</a></br>'+
 	            		
-	            		'</div>';
-	            		var button2 = document.createElement('button');
-	            		  button2.innerHTML = 'prev';
-	            		  button2.onclick = function(){
-	            		    showPrevImage();return false;};
-       					var button = document.createElement('button');
-      		  				button.innerHTML = 'next';
-      		  			 button.style = "right:5%; position: absolute;"
-      		  				button.onclick = function(){
-      		    			showNextImage();return false;
-      		  };
-      		 var button3 = document.createElement('button');
-   		  button3.innerHTML = 'download';
-   		  button3.onclick = function(){
-   			 var byteArr = _base64ToArray(map.get(lastKey));
-   			 saveByteArray("download", byteArr);
-   			  button3.innerHTML='gedrueckt';
-   				return 0;	 
-   			  };
-      		  	document.getElementById('dialog').appendChild(button2);
-      			document.getElementById('dialog').appendChild(button3);
-      			document.getElementById('dialog').appendChild(button);
+	            	'</div>';
+	            	var button2 = document.createElement('button');
+	            	button2.innerHTML = 'prev';
+	            	button2.onclick = function(){
+	            	showPrevImage();return false;};
+       				var button = document.createElement('button');
+      		  		button.innerHTML = 'next';
+      		  		button.style = "right:5%; position: absolute;"
+      		  		button.onclick = function(){
+      		    		showNextImage();return false;
+      		  		};
+      		 		var button3 = document.createElement('button');
+   		  			button3.innerHTML = 'download';
+   		  			button3.onclick = function(){
+   			 			var byteArr = _base64ToArray(map.get(lastKey));
+   			 			saveByteArray("download", byteArr);
+   			  			button3.innerHTML='gedrueckt';
+   						return 0;	 
+   			  		};
+      		  		document.getElementById('dialog').appendChild(button2);
+      				document.getElementById('dialog').appendChild(button3);
+      				document.getElementById('dialog').appendChild(button);
       		  
        			}
-					else{lastKey=getByValue(map,array[i+1]);}
-       		}
-       		function showNextImage()
-       		{
-				bool=0;
-       			var beforeLast = 0;
-       			const map = new Map(Object.entries(/*[[${images}]]*/));
-				const inc = /*[[${imageclasses}]]*/ 'default' ;
+				else{lastKey=getByValue(map,array[i+1]);}
+       			}
+       			function showNextImage()
+       			{
+					bool=0;
+       				var beforeLast = 0;
+       				const map = new Map(Object.entries(/*[[${images}]]*/));
+					const inc = /*[[${imageclasses}]]*/ 'default' ;
 				
-       			const iterator1 = map.values();
+       				const iterator1 = map.values();
 				
-       			while((beforeLast=iterator1.next().value)!= map.get(lastKey))
+       				while((beforeLast=iterator1.next().value)!= map.get(lastKey))
        				{}
        			
-       			lastKey=getByValue(map,iterator1.next().value)
+       				lastKey=getByValue(map,iterator1.next().value)
        			
        			
        			
-       			if(map.get(lastKey)){
+       				if(map.get(lastKey)){
        			
-       			document.getElementById('dialog').innerHTML =
+       					document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
 	            	
 	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
@@ -169,84 +161,84 @@ a:active {
 	            		'</div>';
 	            	
 	            		var button2 = document.createElement('button');
-	            		  button2.innerHTML = 'prev';
-	            		  button2.onclick = function(){
-	            		    showPrevImage();return false;};
-     			var button = document.createElement('button');
+	            		button2.innerHTML = 'prev';
+	            		button2.onclick = function(){
+	            		showPrevImage();return false;};
+     					var button = document.createElement('button');
      			
      			
      			
-    		  button.innerHTML = 'next';
-    		  button.style = "right:5%; position: absolute;"
-    		  button.onclick = function(){
-    		    showNextImage();return false;
-    		  };
-    		  var button3 = document.createElement('button');
-    		  button3.innerHTML = 'download';
-    		  button3.onclick = function(){
-    			 var byteArr = _base64ToArray(map.get(lastKey));
-    			 saveByteArray("download", byteArr);
-    			  button3.innerHTML='gedrueckt';
-    				return 0;	 
-    			  };
-    		  document.getElementById('dialog').appendChild(button2);
-    		  document.getElementById('dialog').appendChild(button3);
-        		document.getElementById('dialog').appendChild(button);
+    		  			button.innerHTML = 'next';
+    		  			button.style = "right:5%; position: absolute;"
+    		  			button.onclick = function(){
+    		    			showNextImage();return false;
+    		 			};
+    		  			var button3 = document.createElement('button');
+    		  			button3.innerHTML = 'download';
+    		  			button3.onclick = function(){
+    			 		var byteArr = _base64ToArray(map.get(lastKey));
+    			 		saveByteArray("download", byteArr);
+    			  		button3.innerHTML='gedrueckt';
+    					return 0;	 
+    			  	};
+    		  		document.getElementById('dialog').appendChild(button2);
+    		  		document.getElementById('dialog').appendChild(button3);
+        			document.getElementById('dialog').appendChild(button);
       		  
-       			}else{lastKey=getByValue(map,beforeLast);}
-       		}
+       				}else{lastKey=getByValue(map,beforeLast);}
+       			}
        	
-			function showImage(key,text, value)
-        	{
+				function showImage(key,text, value)
+        		{
 				
-        		document.getElementById('dialog').innerHTML =
-        		'<div class="dbox-dialog--content">'+
-        		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
-        		'</br>'+
+        			document.getElementById('dialog').innerHTML =
+        			'<div class="dbox-dialog--content">'+
+        			'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+        			'</br>'+
         	
         		
-        		'</br><a href="#!">Close</a></br>'+
-        		'<a href="/deleteIm/'+key+'">Delete</a></br>'+
+        			'</br><a href="#!">Close</a></br>'+
+        			'<a href="/deleteIm/'+key+'">Delete</a></br>'+
         		
-        		'</div>';
+        			'</div>';
         		
       			
-        		var button2 = document.createElement('button');
-      		  button2.innerHTML = 'prev';
-      		  button2.onclick = function(){
-      		    showPrevImage();return false;};
-			var button = document.createElement('button');
-	  button.innerHTML = 'next';
-	  button.style = "right:5%; position: absolute;"
+        			var button2 = document.createElement('button');
+      		  		button2.innerHTML = 'prev';
+      		  		button2.onclick = function(){
+      		    		showPrevImage();return false;};
+						var button = document.createElement('button');
+	  					button.innerHTML = 'next';
+	  					button.style = "right:5%; position: absolute;"
 
-	  button.onclick = function(){
-	    showNextImage();return false;
-	  };
+	  				button.onclick = function(){
+	    				showNextImage();return false;
+	 				};
 	  
-	  var button3 = document.createElement('button');
-		  button3.innerHTML = 'download';
-		  button3.onclick = function(){
-			 var byteArr = _base64ToArray(value);
-			 saveByteArray("download", byteArr);
-			  button3.innerHTML='gedrueckt';
-				return 0;	 
-			  };
+	  				var button3 = document.createElement('button');
+		  			button3.innerHTML = 'download';
+		  			button3.onclick = function(){
+			 			var byteArr = _base64ToArray(value);
+			 			saveByteArray("download", byteArr);
+			  			button3.innerHTML='gedrueckt';
+						return 0;	 
+			  		};
 			 
-        		  document.getElementById('dialog').appendChild(button2);
-        		  document.getElementById('dialog').appendChild(button3);
-        		  document.getElementById('dialog').appendChild(button);
+        		  	document.getElementById('dialog').appendChild(button2);
+        		  	document.getElementById('dialog').appendChild(button3);
+        		  	document.getElementById('dialog').appendChild(button);
           		  
-        		  lastKey = key;
+        		  	lastKey = key;
         		  
         		 
-        	}
-        </script>
-    </head>
-    <body>
-   <table  >
-            <tr>
+        			}
+        		</script>
+    		</head>
+    	<body>
+   	<table  >
+        <tr>
             
-            </tr>
+        </tr>
   		<tr  > 
  		<span >
             <ul class="skills" >
