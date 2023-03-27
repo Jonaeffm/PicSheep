@@ -85,13 +85,7 @@
        		const inc = /*[[${imageclasses}]]*/ 'default' ;
 			var incObj;
 			const incStr = JSON.stringify(inc, null, 2);					
-			for (i=0;i<inc.length;i++)
-			{
-				if(inc[i].id==lastKey)
-				{
-					 incObj=inc[i].name;
-				}
-			}
+			
        		const iterator1 = map.values();
 			var array = [];
        		var i = 0;
@@ -106,6 +100,13 @@
        				lastKey=getByValue(map,array[i]);
        				break;}
        			}
+			for (i=0;i<inc.length;i++)
+			{
+				if(inc[i].id==lastKey)
+				{
+					 incObj=inc[i].name;
+				}
+			}
 				if(map.get(lastKey)){
        			
        				document.getElementById('dialog').innerHTML =
@@ -151,13 +152,7 @@
 					const inc = /*[[${imageclasses}]]*/ 'default' ;
 					var incObj;
 					const incStr = JSON.stringify(inc, null, 2);					
-					for (i=0;i<inc.length;i++)
-					{
-						if(inc[i].id==lastKey)
-						{
-							 incObj=inc[i].name;
-						}
-					}
+					
        				const iterator1 = map.values();
 				
        				while((beforeLast=iterator1.next().value)!= map.get(lastKey))
@@ -165,7 +160,13 @@
        			
        				lastKey=getByValue(map,iterator1.next().value)
        			
-       			
+       			for (i=0;i<inc.length;i++)
+					{
+						if(inc[i].id==lastKey)
+						{
+							 incObj=inc[i].name;
+						}
+					}
        			
        				if(map.get(lastKey)){
        			
@@ -225,7 +226,7 @@
         			'<img src=\"data:image/jpeg;charset=utf-8;base64, '+value+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" /></br>'+
             		
             		'name: '+incObj+
-        			'</br>'+
+        			
         	
         		
         			'</br><a href="#!">Close</a></br>'+
