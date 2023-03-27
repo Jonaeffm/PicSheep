@@ -160,9 +160,9 @@
        					document.getElementById('dialog').innerHTML =
 	            		'<div class="dbox-dialog--content">'+
 	            	
-	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" />'+
+	            		'<img src=\"data:image/jpeg;charset=utf-8;base64, '+map.get(lastKey)+'\" alt=\"test\"  id=\"bigImg\" class=\"bigImgClass\" /></br>'+
 	            		
-	            		
+	            		'name: '+incObj+
 	            		'</br><a href="#!">Close</a></br>'+
 	            		'<a href="/deleteIm/'+lastKey+'">Delete</a></br>'+
 	            		
@@ -176,7 +176,7 @@
      			
      			
      			
-    		  			button.innerHTML = incObj;
+    		  			button.innerHTML = 'next';
     		  			button.style = "right:5%; position: absolute;"
     		  			button.onclick = function(){
     		    			showNextImage();return false;
