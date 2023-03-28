@@ -2,8 +2,10 @@
 /home/jon/Downloads/demo2/src/main/java/bootstrap/ImageController.java
 /home/jon/Downloads/demo2/src/main/java/repositories/ImageDbRepository.java
 /home/jon/Downloads/demo2/src/main/java/repositories/ProgramUserRepository.java
+/home/jon/Downloads/demo2/src/main/java/sevices/IAlbumService.java
 /home/jon/Downloads/demo2/src/main/java/domain/Image.java
 /home/jon/Downloads/demo2/src/main/java/repositories/package-info.java
+/home/jon/Downloads/demo2/src/main/java/sevices/AlbumService.java
 /home/jon/Downloads/demo2/src/main/java/domain/package-info.java
 /home/jon/Downloads/demo2/src/main/java/bootstrap/BootStrapData.java
 /home/jon/Downloads/demo2/src/main/java/bootstrap/SecurityConfig.java

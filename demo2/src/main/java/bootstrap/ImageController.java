@@ -56,8 +56,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
 import repositories.ProgramUserRepository;
+import sevices.AlbumService;
 import sevices.IAlbumService;
 import sevices.IImageService;
+import sevices.ImageService;
 
 @Controller
 public class ImageController {
