@@ -29,4 +29,9 @@ public class AlbumService implements IAlbumService{
 	{
 		return repository.findById(albumId);
 	}
+	
+	public Album save(Album a)
+	{
+		return repository.save(a);
+	}
 }

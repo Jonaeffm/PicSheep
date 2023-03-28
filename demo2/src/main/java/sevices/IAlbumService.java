@@ -10,4 +10,5 @@ public interface IAlbumService {
 	public void deleteById(long ID);
 	public List<Album> findAll();
 	public Optional<Album> findById(Long albumId);
+	public Album save(Album a);
 }

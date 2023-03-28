@@ -67,11 +67,7 @@ public class ImageController {
 	@Autowired
 	private ProgramUserRepository userRepository;
 
-	@Autowired
-	ImageDbRepository imageDbRepository;
 
-	@Autowired
-	AlbumRepository albumRepository;
 
 	@Autowired
 	private IImageService imageService;// contains functions for entity Image
@@ -180,7 +176,7 @@ public class ImageController {
 	// download image from database
 	@GetMapping(value = "/image/{imageId}", produces = MediaType.IMAGE_JPEG_VALUE)
 	Resource downloadImage(@PathVariable Long imageId) {
-		byte[] image = imageDbRepository.findById(imageId)
+		byte[] image = imageService.findById(imageId)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).getContent();
 		return new ByteArrayResource(image);
 	}
@@ -198,15 +194,15 @@ public class ImageController {
 		Image i = new Image();
 		i.setContent(imageJPG("/home/jon/Bilder/gemischt/a3.jpg"));// ______TESTFILE1
 		i.setName("testImage");
-		long testID = imageDbRepository.save(i).getId();
+		long testID = imageService.save(i).getId();
 		Image i2 = new Image();
 		i2.setContent(imageJPG("/home/jon/Bilder/gemischt/a.jpg"));// ______TESTFILE2
 		i2.setName("testImagelarge");
-		testID = imageDbRepository.save(i2).getId();
+		testID = imageService.save(i2).getId();
 		Image i3 = new Image();
 		i3.setContent(imageJPG("/home/jon/Bilder/gemischt/a4.jpg"));// ______TESTFILE2
 		i3.setName("testImagelarge2");
-		testID = imageDbRepository.save(i2).getId();
+		testID = imageService.save(i2).getId();
 		Album a = new Album();
 		a.setName("testAlbum");
 		a.getImages().add(i);
@@ -215,7 +211,7 @@ public class ImageController {
 		i2.setAlbum(a);
 		a.getImages().add(i3);
 		i3.setAlbum(a);
-		albumRepository.save(a);
+		albumService.save(a);
 		try {
 			batp(i3.getContent());
 		} catch (Exception e) {
@@ -264,7 +260,7 @@ public class ImageController {
 	// site for try and test
 	@GetMapping("/tiles")
 	public String getHomePageTiles(Model model, HttpServletResponse response) throws IOException {
-		List<Image> images = imageDbRepository.findAll();
+		List<Image> images = imageService.findAll();
 		Map<Long, String> productBase64Images = new HashMap<>();
 		for (Image image : images) {
 			String contHeader = Base64.encodeBase64String(image.getContent());
@@ -309,7 +305,7 @@ public class ImageController {
 		ImagePath ip = new ImagePath();
 		model.addAttribute("imagePath", ip);
 		List AlbumList = new ArrayList();
-		AlbumList = albumRepository.findAll();
+		AlbumList = albumService.findAll();
 		model.addAttribute("albums", AlbumList);
 		return "insert2";
 	}
@@ -317,10 +313,10 @@ public class ImageController {
 	@RequestMapping(value = "/addImage2", method = RequestMethod.POST)
 	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,
 			@ModelAttribute("imagePath") ImagePath path) {
-		Album a = albumRepository.findById(path.getAlbumId()).get();
+		Album a = albumService.findById(path.getAlbumId()).get();
 		cImage.setAlbum(a);
 		cImage.setName(imageToAdd.getName());
-		imageDbRepository.save(cImage);
+		imageService.save(cImage);
 		System.out.print("test " + path.getPath());
 		System.out.println("Name: " + imageToAdd.getName());
 		System.out.println("Album: " + path.getAlbumId());
@@ -343,14 +339,14 @@ public class ImageController {
 
 	@RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
 	public String addAlbum2(@ModelAttribute("album") Album albumToAdd) {
-		albumRepository.save(albumToAdd);
+		albumService.save(albumToAdd);
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
 
 	@GetMapping("/delete/{id}")
 	public String deleteIncome(@PathVariable("id") long id, Model model) {
-		List<Image> iList = imageService.findByAlbum(albumRepository.getById(id));
+		List<Image> iList = imageService.findByAlbum(albumService.findById(id).get());
 		for (Image i : iList) {
 			// fruit is an element of the `fruits` array.
 			imageService.deleteById(i.getId());
@@ -362,7 +358,7 @@ public class ImageController {
 
 	@GetMapping("/download/{id}")
 	public String deleteIncome2(@PathVariable("id") long id, Model model) {
-		Optional<Image> itd = imageDbRepository.findById(id);
+		Optional<Image> itd = imageService.findById(id);
 		try {
 			batp(itd.get().getContent());
 		} catch (Exception e) {
@@ -376,7 +372,7 @@ public class ImageController {
 
 	@GetMapping("/deleteIm/{id}")
 	public String deleteImage(@PathVariable("id") long id, Model model) {
-		List<Album> aList = albumRepository.findAll();
+		List<Album> aList = albumService.findAll();
 		for (Album a : aList) {
 			Collection<Image> temp = new ArrayList<Image>();
 			for (Image i : a.getImages()) {
@@ -393,7 +389,7 @@ public class ImageController {
 
 	@GetMapping("/dia") // diashow function
 	public String getDia(Model model, HttpServletResponse response) throws IOException {
-		List<Image> images = imageDbRepository.findAll();// all images
+		List<Image> images = imageService.findAll();// all images
 		HashMap<Long, String> productBase64Images = new HashMap<>();// images in base64
 		for (Image image : images) {
 			String contHeader = Base64.encodeBase64String(image.getContent());// code
@@ -440,17 +436,17 @@ public class ImageController {
 		ImagePath ip = new ImagePath();
 		model.addAttribute("imagePath", ip);
 		List AlbumList = new ArrayList();
-		AlbumList = albumRepository.findAll();
+		AlbumList = albumService.findAll();
 		model.addAttribute("albums", AlbumList);
 		return "iF";
 	}
 
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.POST)
 	public String iF(@ModelAttribute("images") Image imageToAdd, @ModelAttribute("imagePath") ImagePath path) {
-		Album a = albumRepository.findById(path.getAlbumId()).get();
+		Album a = albumService.findById(path.getAlbumId()).get();
 		cImageList.get(cImageInt).setAlbum(a);
 		cImageList.get(cImageInt).setName(imageToAdd.getName());
-		imageDbRepository.save(cImageList.get(cImageInt));
+		imageService.save(cImageList.get(cImageInt));
 		System.out.print("test " + path.getPath());
 		System.out.println("Name: " + imageToAdd.getName());
 		System.out.println("Album: " + path.getAlbumId());
@@ -495,7 +491,7 @@ public class ImageController {
 	@GetMapping("/diaAlbum/{id}") // diashow for album
 	public String getDiaAlbum(@PathVariable("id") Long albumId, Model model, HttpServletResponse response)
 			throws IOException {
-		Album a = albumRepository.findById(albumId)
+		Album a = albumService.findById(albumId)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		List<Image> images = imageService.findByAlbum(a);
 		HashMap<Long, String> productBase64Images = new HashMap<>();// images in base64
