@@ -30,6 +30,6 @@ public class ImageService implements IImageService{
 	@Override
 	public void deleteById(long ID) {
 		// TODO Auto-generated method stub
-		
+		repository.deleteById(ID);
 	}
 }	

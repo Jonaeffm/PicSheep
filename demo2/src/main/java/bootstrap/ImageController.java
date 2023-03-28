@@ -56,6 +56,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import repositories.AlbumRepository;
 import repositories.ImageDbRepository;
 import repositories.ProgramUserRepository;
+import sevices.IAlbumService;
 import sevices.IImageService;
 
 @Controller
@@ -73,6 +74,8 @@ public class ImageController {
 	@Autowired
 	private IImageService imageService;// contains functions for entity Image
 
+	@Autowired
+	private IAlbumService albumService;
 	// new imported images for select album
 	List<Image> cImageList;
 	Image cImage;
@@ -350,7 +353,7 @@ public class ImageController {
 			// fruit is an element of the `fruits` array.
 			imageService.deleteById(i.getId());
 		}
-		albumRepository.deleteById(id);
+		albumService.deleteById(id);
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
@@ -381,7 +384,7 @@ public class ImageController {
 			}
 			a.setImages(temp);
 		}
-		imageDbRepository.deleteById(id);
+		imageService.deleteById(id);
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
