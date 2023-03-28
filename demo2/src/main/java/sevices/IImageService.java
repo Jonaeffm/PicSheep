@@ -10,4 +10,5 @@ import domain.Image;
 public interface IImageService {
 	public void deleteById(long ID);
 	public List<Image> findByAlbum(Album a);
+	public List<Image> findAll();
 }

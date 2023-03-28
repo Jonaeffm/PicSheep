@@ -188,7 +188,7 @@ public class ImageController {
 	// shows albums
 	@GetMapping(value = "/")
 	public String showAlbums(Model model) {
-		model.addAttribute("albums", albumRepository.findAll());
+		model.addAttribute("albums", albumService.findAll());
 		return "showAlbum";
 	}
 
@@ -248,7 +248,7 @@ public class ImageController {
 	// show images
 	@GetMapping("/images")
 	public String getHomePage(Model model, HttpServletResponse response) throws IOException {
-		List<Image> images = imageDbRepository.findAll();// all images
+		List<Image> images = imageService.findAll();// all images
 		HashMap<Long, String> productBase64Images = new HashMap<>();// images in base64
 		for (Image image : images) {
 			String contHeader = Base64.encodeBase64String(image.getContent());// code
@@ -283,7 +283,7 @@ public class ImageController {
 	@GetMapping("/showAlbum/{id}")
 	public String showAlbum(@PathVariable("id") Long albumId, Model model, HttpServletResponse response)
 			throws IOException {
-		Album a = albumRepository.findById(albumId)
+		Album a = albumService.findById(albumId)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		List<Image> images = imageService.findByAlbum(a);
 		Map<Long, String> productBase64Images = new HashMap<>();

@@ -32,4 +32,9 @@ public class ImageService implements IImageService{
 		// TODO Auto-generated method stub
 		repository.deleteById(ID);
 	}
+	
+	public List<Image> findAll()
+	{
+		return repository.findAll();
+	}
 }	
