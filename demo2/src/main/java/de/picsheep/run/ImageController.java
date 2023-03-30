@@ -115,7 +115,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
-	public String showUserInfo(Model model) {
+	public String addUser(Model model) {
 		ProgramUser b = new ProgramUser();
 		model.addAttribute("users", b);
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
@@ -123,7 +123,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String processUserInfo(@ModelAttribute("users") ProgramUser userToAdd) {
+	public String addUserPost(@ModelAttribute("users") ProgramUser userToAdd) {
 		userRepository.save(userToAdd);
 		// BudgetService.addBudget(budgetToAdd);
 		String returnStr = "redirect:/";
@@ -131,7 +131,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-	public String showUserInfo2(Model model) {
+	public String deleteUserGet(Model model) {
 		ProgramUser b = new ProgramUser();
 		model.addAttribute("users", b);
 		// model.addAttribute("byDate", Comparator.comparing(Budget::getDate));
@@ -139,7 +139,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-	public String processUserInfo2(@ModelAttribute("users") ProgramUser userToAdd) {
+	public String deleteUserPost(@ModelAttribute("users") ProgramUser userToAdd) {
 		ProgramUser p = userRepository.findByUsername(userToAdd.getUsername());
 		if (userToAdd.getPassword().equals(p.getPassword())) {
 			userRepository.delete(userRepository.findByUsername(userToAdd.getUsername()));
@@ -295,7 +295,7 @@ public class ImageController {
 
 	// add one image from file
 	@RequestMapping(value = "/addImage2", method = RequestMethod.GET)
-	public String showStudentInfo2(Model model) {
+	public String addImage2Get(Model model) {
 		Image b = new Image();
 		Album a = new Album();
 		b.setAlbum(a);
@@ -310,7 +310,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/addImage2", method = RequestMethod.POST)
-	public String processStudentInfo(@ModelAttribute("images") Image imageToAdd,
+	public String addImage2Post(@ModelAttribute("images") Image imageToAdd,
 			@ModelAttribute("imagePath") ImagePath path) {
 		Album a = albumService.findById(path.getAlbumId()).get();
 		cImage.setAlbum(a);
@@ -324,7 +324,7 @@ public class ImageController {
 	}
 
 	@RequestMapping(value = "/addImage", method = RequestMethod.GET)
-	public String showStudentInfo(Model model) {
+	public String addImageGet(Model model) {
 		return "insert";
 	}
 
@@ -344,7 +344,7 @@ public class ImageController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteIncome(@PathVariable("id") long id, Model model) {
+	public String delete(@PathVariable("id") long id, Model model) {
 		List<Image> iList = imageService.findByAlbum(albumService.findById(id).get());
 		for (Image i : iList) {
 			// fruit is an element of the `fruits` array.
@@ -356,7 +356,7 @@ public class ImageController {
 	}
 
 	@GetMapping("/download/{id}")
-	public String deleteIncome2(@PathVariable("id") long id, Model model) {
+	public String downloadImage(@PathVariable("id") long id, Model model) {
 		Optional<Image> itd = imageService.findById(id);
 		try {
 			batp(itd.get().getContent());
