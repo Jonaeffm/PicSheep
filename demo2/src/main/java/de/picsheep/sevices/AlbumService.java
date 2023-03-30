@@ -1,0 +1,38 @@
+package de.picsheep.sevices;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import de.picsheep.domain.Album;
+import de.picsheep.domain.Image;
+import de.picsheep.repositories.AlbumRepository;
+import de.picsheep.repositories.ImageDbRepository;
+@Service
+public class AlbumService implements IAlbumService{
+	@Autowired
+	private AlbumRepository repository;
+
+	@Override
+	public void deleteById(long ID) {
+		// TODO Auto-generated method stub
+		repository.deleteById(ID);
+	}
+	
+	public List<Album> findAll()
+	{
+		return repository.findAll();
+	}
+	
+	public Optional<Album> findById(Long albumId)
+	{
+		return repository.findById(albumId);
+	}
+	
+	public Album save(Album a)
+	{
+		return repository.save(a);
+	}
+}
