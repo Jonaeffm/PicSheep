@@ -19,13 +19,7 @@ public class ImageService implements IImageService{
 	
 	public List<Image> findByAlbum(Album a)
 	{
-	List<Image> temp = (List<Image>) repository.findAll();
-	for(int i=temp.size()-1;i>-1;i--)
-	{
-		if(!temp.get(i).getAlbum().equals(a))
-						temp.remove(i);
-	}
-	return temp;
+	return repository.findByAlbum(a.getId());
 }
 	@Override
 	public void deleteById(long ID) {
