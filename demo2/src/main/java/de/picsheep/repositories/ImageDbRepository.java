@@ -9,6 +9,6 @@ import de.picsheep.domain.Album;
 import de.picsheep.domain.Image;
 
 public interface ImageDbRepository extends JpaRepository<Image, Long>{
-@Query (value= "SELECT * FROM Image LEFT JOIN Album ON Image.Album.ALBUM_ID=ALBUM_ID WHERE ALBUM_ID=?")
+@Query (value= "SELECT * FROM album_image  WHERE AlBUM_ID=?")
 public List<Image> findByAlbum(long id);
 }
