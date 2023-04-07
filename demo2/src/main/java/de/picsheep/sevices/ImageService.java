@@ -19,7 +19,7 @@ public class ImageService implements IImageService{
 	
 	public List<Image> findByAlbum(Album a)
 	{
-	return repository.findByAlbum(a.getId());
+	return repository.findByAlbum(a);
 }
 	@Override
 	public void deleteById(long ID) {
