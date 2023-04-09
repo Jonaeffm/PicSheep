@@ -467,6 +467,8 @@ public class ImageController {
 			String returnStr = "redirect:/rdrct";
 			return returnStr;
 		}
+		cImageList = new ArrayList<Image>();
+		cImageInt=0;
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
@@ -478,7 +480,7 @@ public class ImageController {
 
 	@PostMapping("/files/upload")
 	public String uploadFiles(@RequestParam("files") MultipartFile[] files) {
-		cImageList = new ArrayList<Image>();
+		
 		for (MultipartFile f : files) {
 			Image dbImage = new Image();
 			dbImage.setName(f.getName());
@@ -490,7 +492,7 @@ public class ImageController {
 			}
 			cImageList.add(dbImage);
 		}
-		cImageInt = 0;
+		
 		String returnStr = "redirect:/insertFolder";
 		return returnStr;
 	}
