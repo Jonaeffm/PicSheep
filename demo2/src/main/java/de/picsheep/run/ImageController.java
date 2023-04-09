@@ -74,7 +74,7 @@ public class ImageController {
 	@Autowired
 	private IAlbumService albumService;
 	// new imported images for select album
-	List<Image> cImageList;
+	List<Image >cImageList=new ArrayList<Image>();
 	Image cImage;
 	// number of the current image in array
 	int cImageInt;
@@ -183,6 +183,7 @@ public class ImageController {
 	// shows albums
 	@GetMapping(value = "/")
 	public String showAlbums(Model model) {
+		
 		model.addAttribute("albums", albumService.findAll());
 		return "showAlbum";
 	}
@@ -418,16 +419,21 @@ public class ImageController {
 		// model.addAttribute("images", imageDbRepository.findAll());
 		return "DiaShow";
 	}
-
-	// upload more then one image
-	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
-	public String iF(Model model) {
-		if (cImageList.size() > (cImageInt + 1)) {
-			
+	
+	@RequestMapping(value="/direct")
+	public String direct() {
+	if (cImageList.size() > (cImageInt + 1)) {
+		String returnStr = "redirect:/insertFolder";
+		return returnStr;
 		}
 		else {
 		String returnStr = "redirect:/";
 		return returnStr;}
+	}
+	// upload more then one image
+	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
+	public String iF(Model model) {
+	
 		Image image = cImageList.get(cImageInt);
 		HashMap<Long, String> productBase64Images = new HashMap<Long, String>();
 		String contHeader = Base64.encodeBase64String(image.getContent());// code
@@ -443,6 +449,7 @@ public class ImageController {
 		List AlbumList = new ArrayList();
 		AlbumList = albumService.findAll();
 		model.addAttribute("albums", AlbumList);
+		
 		return "iF";
 	}
 
