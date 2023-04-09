@@ -422,6 +422,12 @@ public class ImageController {
 	// upload more then one image
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
 	public String iF(Model model) {
+		if (cImageList.size() > (cImageInt + 1)) {
+			
+		}
+		else {
+		String returnStr = "redirect:/";
+		return returnStr;}
 		Image image = cImageList.get(cImageInt);
 		HashMap<Long, String> productBase64Images = new HashMap<Long, String>();
 		String contHeader = Base64.encodeBase64String(image.getContent());// code
