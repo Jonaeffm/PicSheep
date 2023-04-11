@@ -30,6 +30,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,7 +80,9 @@ public class ImageController {
 	// number of the current image in array
 	int cImageInt;
 	// Create ObjectMapper object.
-
+	ProgramUser cUser;
+	
+	
 	public static void batp(byte[] data) throws Exception {
 		ByteArrayInputStream bis = new ByteArrayInputStream(data);
 		BufferedImage bImage2 = ImageIO.read(bis);
@@ -492,6 +495,15 @@ public class ImageController {
 			}
 			cImageList.add(dbImage);
 		}
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
+
+		// getUsername() - Returns the username used to authenticate the user.
+		System.out.println("User name: " + userDetails.getUsername());
+
+
+		cUser =userDetails;
 		
 		String returnStr = "redirect:/insertFolder";
 		return returnStr;
