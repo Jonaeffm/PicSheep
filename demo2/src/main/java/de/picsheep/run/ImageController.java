@@ -485,7 +485,7 @@ public class ImageController {
 	public String uploadFiles(@RequestParam("files") MultipartFile[] files) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
-		if (cUser!=null&&cUser != userDetails)
+		if (cUser!=null&&cUser.getUsername() != userDetails.getUsername())
 			return "occupied";		
 		for (MultipartFile f : files) {
 			Image dbImage = new Image();
