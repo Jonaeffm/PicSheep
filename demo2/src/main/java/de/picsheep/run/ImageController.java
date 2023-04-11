@@ -483,7 +483,10 @@ public class ImageController {
 
 	@PostMapping("/files/upload")
 	public String uploadFiles(@RequestParam("files") MultipartFile[] files) {
-		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
+		if (cUser!=null&&cUser != userDetails)
+			return "occupied";		
 		for (MultipartFile f : files) {
 			Image dbImage = new Image();
 			dbImage.setName(f.getName());
@@ -496,8 +499,7 @@ public class ImageController {
 			cImageList.add(dbImage);
 		}
 		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
+
 
 		// getUsername() - Returns the username used to authenticate the user.
 		System.out.println("User name: " + userDetails.getUsername());
