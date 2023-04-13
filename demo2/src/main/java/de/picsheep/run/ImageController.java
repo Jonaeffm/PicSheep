@@ -472,6 +472,7 @@ public class ImageController {
 		}
 		cImageList = new ArrayList<Image>();
 		cImageInt=0;
+		cUser=null;
 		String returnStr = "redirect:/";
 		return returnStr;
 	}
