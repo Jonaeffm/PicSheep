@@ -425,6 +425,12 @@ public class ImageController {
 	
 	@RequestMapping(value="/direct")
 	public String direct() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
+		if (cUser.getUsername()!=userDetails.getUsername()) {
+			String returnStr = "redirect:/";
+			return returnStr;
+		}
 	if (cImageList.size() > (cImageInt + 1)) {
 		String returnStr = "redirect:/insertFolder";
 		return returnStr;
@@ -432,6 +438,7 @@ public class ImageController {
 		else {
 		String returnStr = "redirect:/";
 		return returnStr;}
+		
 	}
 	// upload more then one image
 	@RequestMapping(value = "/insertFolder", method = RequestMethod.GET)
