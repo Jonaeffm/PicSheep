@@ -427,10 +427,11 @@ public class ImageController {
 	public String direct() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		ProgramUser userDetails = (ProgramUser) authentication.getPrincipal();
+		if(cUser!=null) {
 		if (cUser.getUsername()!=userDetails.getUsername()) {
 			String returnStr = "redirect:/";
 			return returnStr;
-		}
+		}}
 	if (cImageList.size() > (cImageInt + 1)) {
 		String returnStr = "redirect:/insertFolder";
 		return returnStr;
